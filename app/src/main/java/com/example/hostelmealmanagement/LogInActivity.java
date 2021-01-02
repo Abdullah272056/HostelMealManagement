@@ -12,6 +12,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class LogInActivity extends AppCompatActivity {
     TextView signUpTextView;
     ApiInterface apiInterface;
     SharePref sharePref;
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,7 @@ public class LogInActivity extends AppCompatActivity {
         signInButton = findViewById(R.id.signInButtonId);
         rememberCheckBox = findViewById(R.id.rememberCheckBoxId);
         signUpTextView = findViewById(R.id.signUpTextViewId);
+        progressBar = findViewById(R.id.logInProgressBarId);
         //initialize apiInterface
         apiInterface = RetrofitClient.getRetrofit("http://hostel-meal-calc.herokuapp.com/").create(ApiInterface.class);
 
@@ -97,6 +100,7 @@ public class LogInActivity extends AppCompatActivity {
             passwordEditText.requestFocus();
             return;
         }
+        progressBar.setVisibility(View.VISIBLE);
         LogInSetDataResponse logInSetDataResponse=new LogInSetDataResponse(email,password);
         apiInterface.logInData(logInSetDataResponse).enqueue(new Callback<LogInGetDataResponse>() {
             @Override
@@ -122,13 +126,14 @@ public class LogInActivity extends AppCompatActivity {
                 }catch (Exception e){
                     Toast.makeText(LogInActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
                 }
+                progressBar.setVisibility(View.INVISIBLE);
 
             }
 
             @Override
             public void onFailure(Call<LogInGetDataResponse> call, Throwable t) {
                 Toast.makeText(LogInActivity.this, "failed! Try again", Toast.LENGTH_SHORT).show();
-
+                progressBar.setVisibility(View.INVISIBLE);
             }
         });
 
