@@ -13,12 +13,22 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.hostelmealmanagement.login.LogInGetDataResponse;
+import com.example.hostelmealmanagement.login.LogInSetDataResponse;
+import com.example.hostelmealmanagement.retrofit.ApiInterface;
+import com.example.hostelmealmanagement.retrofit.RetrofitClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LogInActivity extends AppCompatActivity {
     EditText emailEditText,passwordEditText;
     Button signInButton;
     CheckBox rememberCheckBox;
-
+ApiInterface apiInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +38,9 @@ public class LogInActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.signInPasswordEditTextId);
         signInButton = findViewById(R.id.signInButtonId);
         rememberCheckBox = findViewById(R.id.rememberCheckBoxId);
+        //initialize apiInterface
+        apiInterface = RetrofitClient.getRetrofit("http://hostel-meal-calc.herokuapp.com/").create(ApiInterface.class);
+
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +73,34 @@ public class LogInActivity extends AppCompatActivity {
             passwordEditText.requestFocus();
             return;
         }
+        LogInSetDataResponse logInSetDataResponse=new LogInSetDataResponse(email,password);
+        apiInterface.logInData(logInSetDataResponse).enqueue(new Callback<LogInGetDataResponse>() {
+            @Override
+            public void onResponse(Call<LogInGetDataResponse> call, Response<LogInGetDataResponse> response) {
+                try {
+                    if (response.code()==200){
+                        Toast.makeText(LogInActivity.this, "success!", Toast.LENGTH_SHORT).show();
+
+                    }
+                    if (response.code()==401){
+                        Toast.makeText(LogInActivity.this, "Invalid credentials!", Toast.LENGTH_SHORT).show();
+
+                    }else {
+                        Toast.makeText(LogInActivity.this, "Try again!", Toast.LENGTH_SHORT).show();
+                    }
+
+                }catch (Exception e){
+                    Toast.makeText(LogInActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<LogInGetDataResponse> call, Throwable t) {
+                Toast.makeText(LogInActivity.this, "failed! Try again", Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
 
