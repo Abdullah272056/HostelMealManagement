@@ -12,5 +12,8 @@ public interface ApiInterface {
     @POST("api/auth/register")
     Call<RegisterGetDataResponse> registrationData(@Body RegisterSetDataResponse registerSetDataResponse);
 
+    //logIn
+    @POST("api/auth/login")
+    Call<RegisterSetDataResponse> logInData(@Body RegisterSetDataResponse registerSetDataResponse);
 
 }
