@@ -19,6 +19,9 @@
     android:layout_height="match_parent"
     tools:ignore="MissingConstraints">
     <EditText
+        android:inputType="textEmailAddress"
+        android:imeOptions="actionNext"
+        android:maxLines="1"
         android:drawableRight="@drawable/ic_baseline_email_24"
         android:layout_marginTop="10dp"
         android:background="#DAD3D3"
@@ -31,6 +34,7 @@
 
 
     <EditText
+        android:imeOptions="actionSend"
         android:drawableRight="@drawable/ic_baseline_lock_24"
         android:layout_marginTop="30dp"
         android:background="#DAD3D3"
