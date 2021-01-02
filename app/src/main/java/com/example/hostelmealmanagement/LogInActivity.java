@@ -31,6 +31,7 @@ public class LogInActivity extends AppCompatActivity {
     CheckBox rememberCheckBox;
     TextView signUpTextView;
     ApiInterface apiInterface;
+    SharePref sharePref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,22 @@ public class LogInActivity extends AppCompatActivity {
         signUpTextView = findViewById(R.id.signUpTextViewId);
         //initialize apiInterface
         apiInterface = RetrofitClient.getRetrofit("http://hostel-meal-calc.herokuapp.com/").create(ApiInterface.class);
+
+        // remember data retrieve and checking
+        sharePref=new SharePref();
+        String emailValue= sharePref.loadRememberEmail(LogInActivity.this);
+        String passwordValue= sharePref.loadRememberPassword(LogInActivity.this);
+        if (!emailValue.isEmpty() && !passwordValue.isEmpty()){
+            emailEditText.setText(String.valueOf(emailValue));
+            passwordEditText.setText(String.valueOf(passwordValue));
+            login();
+        }
+        else {
+
+            // Toast.makeText(this, "empty", Toast.LENGTH_SHORT).show();
+        }
+
+
 
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,8 +79,8 @@ public class LogInActivity extends AppCompatActivity {
 
 
     public  void  login(){
-        String email= emailEditText.getText().toString();
-        String password=passwordEditText.getText().toString();
+        final String email= emailEditText.getText().toString();
+        final String password=passwordEditText.getText().toString();
 
         if (TextUtils.isEmpty(email)){
             emailEditText.setError("Enter your email");
@@ -83,9 +100,13 @@ public class LogInActivity extends AppCompatActivity {
         LogInSetDataResponse logInSetDataResponse=new LogInSetDataResponse(email,password);
         apiInterface.logInData(logInSetDataResponse).enqueue(new Callback<LogInGetDataResponse>() {
             @Override
-            public void onResponse(Call<LogInGetDataResponse> call, Response<LogInGetDataResponse> response) {
+            public void onResponse(Call<LogInGetDataResponse> call, Response<LogInGetDataResponse> response){
                 try {
                     if (response.code()==200){
+                        sharePref=new SharePref();
+                        if (rememberCheckBox.isChecked()){
+                            sharePref.rememberData(LogInActivity.this,email,password);
+                        }
                         Toast.makeText(LogInActivity.this, "success!", Toast.LENGTH_SHORT).show();
                         Intent intent =new Intent(LogInActivity.this,HomeActivity.class);
                         intent.putExtra("token",response.body().getToken());
@@ -110,7 +131,6 @@ public class LogInActivity extends AppCompatActivity {
 
             }
         });
-
 
 
     }
