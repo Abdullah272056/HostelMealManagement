@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,14 +8,12 @@
     android:background="@drawable/sss"
     android:padding="10dp"
     tools:context=".LogInActivity"
-    android:gravity="center"
     android:orientation="horizontal">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-<LinearLayout
-    android:gravity="center"
-    android:layout_gravity="center"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="MissingConstraints">
+     <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -87,6 +85,7 @@
         android:layout_height="wrap_content"/>
 
 </LinearLayout>
+        </ScrollView>
     <ProgressBar
         android:foregroundGravity="center"
         android:id="@+id/logInProgressBarId"
@@ -98,4 +97,3 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</LinearLayout>
