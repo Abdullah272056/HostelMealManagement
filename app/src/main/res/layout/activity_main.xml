@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
+                android:drawableRight="@drawable/ic_baseline_person_24"
                 android:padding="10dp"
                 android:background="#DAD3D3"
                 android:id="@+id/memberNameEditTextId"
@@ -25,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <EditText
+                android:drawableRight="@drawable/ic_baseline_email_24"
                 android:padding="10dp"
                 android:background="#DAD3D3"
                 android:id="@+id/emailEditTextId"
@@ -49,6 +51,7 @@
             </LinearLayout>
 
             <EditText
+                android:drawableRight="@drawable/ic_baseline_home_24"
                 android:padding="10dp"
                 android:background="#DAD3D3"
                 android:id="@+id/hostelNameEditTextId"
@@ -58,6 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <EditText
+                android:drawableRight="@drawable/ic_baseline_lock_24"
                 android:padding="10dp"
                 android:background="#DAD3D3"
                 android:id="@+id/passwordEditTextId"
