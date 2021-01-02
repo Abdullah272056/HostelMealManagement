@@ -1,5 +1,7 @@
 package com.example.hostelmealmanagement.retrofit;
 
+import com.example.hostelmealmanagement.login.LogInGetDataResponse;
+import com.example.hostelmealmanagement.login.LogInSetDataResponse;
 import com.example.hostelmealmanagement.register.RegisterGetDataResponse;
 import com.example.hostelmealmanagement.register.RegisterSetDataResponse;
 
@@ -14,6 +16,6 @@ public interface ApiInterface {
 
     //logIn
     @POST("api/auth/login")
-    Call<RegisterSetDataResponse> logInData(@Body RegisterSetDataResponse registerSetDataResponse);
+    Call<LogInGetDataResponse> logInData(@Body LogInSetDataResponse logInSetDataResponse);
 
 }
