@@ -9,6 +9,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +31,7 @@ Button signUpButton;
 TextView signInTextView;
 Spinner memberTypeSpinner;
 ApiInterface apiInterface;
+ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +46,7 @@ ApiInterface apiInterface;
         signUpButton =findViewById(R.id.signUpButtonId);
         signInTextView =findViewById(R.id.signInTextViewId);
         memberTypeSpinner =findViewById(R.id.memberTypeSpinnerId);
+        progressBar =findViewById(R.id.registrationProgressBarId);
 
         //initialize apiInterface
         apiInterface = RetrofitClient.getRetrofit("http://hostel-meal-calc.herokuapp.com/").create(ApiInterface.class);
@@ -102,7 +105,7 @@ ApiInterface apiInterface;
             passwordEditText.requestFocus();
             return;
         }
-
+        progressBar.setVisibility(View.VISIBLE);
         RegisterSetDataResponse registerSetDataResponse=new RegisterSetDataResponse(memberName,
                 email,password,hostelName,memberType);
         apiInterface.registrationData(registerSetDataResponse).enqueue(new Callback<RegisterGetDataResponse>() {
@@ -112,11 +115,17 @@ ApiInterface apiInterface;
               if (response.code()==201){
                   Toast.makeText(MainActivity.this, "Create successful", Toast.LENGTH_SHORT).show();
               }else if(response.code()==400) {
+                  emailEditText.setError("email already exist");
+                  emailEditText.requestFocus();
                   Toast.makeText(MainActivity.this, "The email already exist", Toast.LENGTH_SHORT).show();
               }else if(response.code()==404) {
+                  hostelNameEditText.setError("your hostel not created yet");
+                  hostelNameEditText.requestFocus();
                   Toast.makeText(MainActivity.this, "Your hostel not created yet", Toast.LENGTH_SHORT).show();
               }
               else if(response.code()==401) {
+                  hostelNameEditText.setError("Hostel name you entered already exist");
+                  hostelNameEditText.requestFocus();
                   Toast.makeText(MainActivity.this, "Hostel name you entered already exist", Toast.LENGTH_SHORT).show();
                 Log.e("err",response.errorBody().toString());
               }else {
@@ -125,6 +134,7 @@ ApiInterface apiInterface;
         }catch (Exception e){
             Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
         }
+                progressBar.setVisibility(View.INVISIBLE);
 
             }
 
@@ -132,6 +142,7 @@ ApiInterface apiInterface;
             public void onFailure(Call<RegisterGetDataResponse> call, Throwable t) {
                 Toast.makeText(MainActivity.this, t.getMessage().toString(), Toast.LENGTH_SHORT).show();
                 Log.e("ere",t.getMessage().toLowerCase());
+                progressBar.setVisibility(View.INVISIBLE);
 
             }
         });
