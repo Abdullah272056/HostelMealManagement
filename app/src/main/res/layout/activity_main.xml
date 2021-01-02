@@ -1,18 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/sss"
+    android:padding="10dp"
     tools:context=".MainActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:padding="10dp"
+                android:background="#DAD3D3"
+                android:id="@+id/memberNameEditTextId"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:hint="Full Name*"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:padding="10dp"
+                android:background="#DAD3D3"
+                android:id="@+id/emailEditTextId"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:hint="Email *"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:background="#DAD3D3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:padding="10dp"
+                    android:textSize="20sp"
+                    android:entries="@array/user_type"
+                    android:id="@+id/businessTypeSpinnerId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:padding="10dp"
+                android:background="#DAD3D3"
+                android:id="@+id/hostelNameEditTextId"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:hint="Hostel Name*"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:padding="10dp"
+                android:background="#DAD3D3"
+                android:id="@+id/passwordEditTextId"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:hint="Password*"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:background="#2196F3"
+                android:padding="10dp"
+                android:id="@+id/signUpButtonId"
+                android:textSize="25sp"
+                android:layout_marginTop="20dp"
+                android:text="Register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textColor="#ffffff"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="30dp"
+                android:layout_gravity="right"
+                android:id="@+id/signInTextViewId"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:text="already Have an account? Sign In"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>

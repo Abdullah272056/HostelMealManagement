@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">HostelMealManagement</string>
+
+    <array name="user_type">
+    <item>boarder</item>
+    <item>manager</item>
+
+    </array>
 </resources>
