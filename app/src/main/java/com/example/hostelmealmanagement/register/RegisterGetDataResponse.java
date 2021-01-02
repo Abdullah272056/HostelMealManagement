@@ -1,4 +1,4 @@
-package com.example.hostelmealmanagement.retrofit.register;
+package com.example.hostelmealmanagement.register;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

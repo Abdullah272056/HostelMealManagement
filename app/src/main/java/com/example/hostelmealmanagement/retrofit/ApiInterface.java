@@ -1,7 +1,7 @@
 package com.example.hostelmealmanagement.retrofit;
 
-import com.example.hostelmealmanagement.retrofit.register.RegisterGetDataResponse;
-import com.example.hostelmealmanagement.retrofit.register.RegisterSetDataResponse;
+import com.example.hostelmealmanagement.register.RegisterGetDataResponse;
+import com.example.hostelmealmanagement.register.RegisterSetDataResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

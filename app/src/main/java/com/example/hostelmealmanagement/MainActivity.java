@@ -16,10 +16,8 @@ import android.widget.Toast;
 
 import com.example.hostelmealmanagement.retrofit.ApiInterface;
 import com.example.hostelmealmanagement.retrofit.RetrofitClient;
-import com.example.hostelmealmanagement.retrofit.register.RegisterGetDataResponse;
-import com.example.hostelmealmanagement.retrofit.register.RegisterSetDataResponse;
-
-import java.io.IOException;
+import com.example.hostelmealmanagement.register.RegisterGetDataResponse;
+import com.example.hostelmealmanagement.register.RegisterSetDataResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
