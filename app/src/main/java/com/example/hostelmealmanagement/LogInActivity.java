@@ -80,9 +80,8 @@ ApiInterface apiInterface;
                 try {
                     if (response.code()==200){
                         Toast.makeText(LogInActivity.this, "success!", Toast.LENGTH_SHORT).show();
-
                     }
-                    if (response.code()==401){
+                    else if (response.code()==401){
                         Toast.makeText(LogInActivity.this, "Invalid credentials!", Toast.LENGTH_SHORT).show();
 
                     }else {
