@@ -9,10 +9,10 @@
     android:padding="10dp"
     tools:context=".LogInActivity"
     android:orientation="horizontal">
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:ignore="MissingConstraints">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
      <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
