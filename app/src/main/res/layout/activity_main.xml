@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,7 +10,8 @@
     tools:context=".MainActivity">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -101,6 +102,15 @@
         </LinearLayout>
     </ScrollView>
 
+    <ProgressBar
+        android:foregroundGravity="center"
+        android:id="@+id/registrationProgressBarId"
+        android:layout_width="59dp"
+        android:layout_height="67dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

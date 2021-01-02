@@ -109,7 +109,6 @@ ApiInterface apiInterface;
             @Override
             public void onResponse(Call<RegisterGetDataResponse> call, Response<RegisterGetDataResponse> response) {
         try {
-
               if (response.code()==201){
                   Toast.makeText(MainActivity.this, "Create successful", Toast.LENGTH_SHORT).show();
               }else if(response.code()==400) {
