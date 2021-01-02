@@ -16,6 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
+                android:lines="1"
+                android:maxLines="1"
                 android:drawableRight="@drawable/ic_baseline_person_24"
                 android:padding="10dp"
                 android:background="#DAD3D3"
@@ -26,6 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <EditText
+                android:inputType="textEmailAddress"
                 android:drawableRight="@drawable/ic_baseline_email_24"
                 android:padding="10dp"
                 android:background="#DAD3D3"
@@ -44,7 +47,7 @@
                     android:padding="10dp"
                     android:textSize="20sp"
                     android:entries="@array/user_type"
-                    android:id="@+id/businessTypeSpinnerId"
+                    android:id="@+id/memberTypeSpinnerId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -61,6 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <EditText
+                android:inputType="textPassword"
                 android:drawableRight="@drawable/ic_baseline_lock_24"
                 android:padding="10dp"
                 android:background="#DAD3D3"
