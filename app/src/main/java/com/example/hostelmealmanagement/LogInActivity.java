@@ -2,6 +2,7 @@ package com.example.hostelmealmanagement;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -28,7 +29,8 @@ public class LogInActivity extends AppCompatActivity {
     EditText emailEditText,passwordEditText;
     Button signInButton;
     CheckBox rememberCheckBox;
-ApiInterface apiInterface;
+    TextView signUpTextView;
+    ApiInterface apiInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,7 @@ ApiInterface apiInterface;
         passwordEditText = findViewById(R.id.signInPasswordEditTextId);
         signInButton = findViewById(R.id.signInButtonId);
         rememberCheckBox = findViewById(R.id.rememberCheckBoxId);
+        signUpTextView = findViewById(R.id.signUpTextViewId);
         //initialize apiInterface
         apiInterface = RetrofitClient.getRetrofit("http://hostel-meal-calc.herokuapp.com/").create(ApiInterface.class);
 
@@ -47,22 +50,20 @@ ApiInterface apiInterface;
                 login();
             }
         });
+      
 
     }
 
 
     public  void  login(){
-
         String email= emailEditText.getText().toString();
         String password=passwordEditText.getText().toString();
-
 
         if (TextUtils.isEmpty(email)){
             emailEditText.setError("Enter your email");
             emailEditText.requestFocus();
             return;
         }
-
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             emailEditText.setError("Enter a valid  email address");
             emailEditText.requestFocus();
@@ -80,6 +81,9 @@ ApiInterface apiInterface;
                 try {
                     if (response.code()==200){
                         Toast.makeText(LogInActivity.this, "success!", Toast.LENGTH_SHORT).show();
+                        Intent intent =new Intent(LogInActivity.this,HomeActivity.class);
+                        intent.putExtra("token",response.body().getToken());
+                        startActivity(intent);
                     }
                     else if (response.code()==401){
                         Toast.makeText(LogInActivity.this, "Invalid credentials!", Toast.LENGTH_SHORT).show();
