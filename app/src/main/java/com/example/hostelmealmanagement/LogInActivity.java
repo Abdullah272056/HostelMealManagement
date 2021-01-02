@@ -21,25 +21,10 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         //view finding
-        emailEditText=findViewById(R.id.signInEmailEditTextId);
-        passwordEditText=findViewById(R.id.signInPasswordEditTextId);
-        signInButton=findViewById(R.id.signInButtonId);
-        rememberCheckBox=findViewById(R.id.rememberCheckBoxId);
-        emailEditText.setOnEditorActionListener( editorActionListener);
-        passwordEditText.setOnEditorActionListener( editorActionListener);
-
+        emailEditText = findViewById(R.id.signInEmailEditTextId);
+        passwordEditText = findViewById(R.id.signInPasswordEditTextId);
+        signInButton = findViewById(R.id.signInButtonId);
+        rememberCheckBox = findViewById(R.id.rememberCheckBoxId);
 
     }
-    private TextView.OnEditorActionListener editorActionListener=new TextView.OnEditorActionListener() {
-        @Override
-        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-            switch (actionId){
-                case EditorInfo.IME_ACTION_NEXT:
-                    break;
-                case EditorInfo.IME_ACTION_SEND:
-                    break;
-            }
-            return false;
-        }
-    };
 }

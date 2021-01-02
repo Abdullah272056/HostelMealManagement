@@ -34,7 +34,7 @@
 
 
     <EditText
-        android:imeOptions="actionSend"
+        android:imeOptions="actionDone"
         android:drawableRight="@drawable/ic_baseline_lock_24"
         android:layout_marginTop="30dp"
         android:background="#DAD3D3"
