@@ -34,9 +34,9 @@ public class HomeActivity extends AppCompatActivity {
         totalExpenseTextView=findViewById(R.id.totalExpenseTextViewId);
         totalMealTextView=findViewById(R.id.totalMealTextViewId);
         mealRateTextView=findViewById(R.id.mealRateTextViewId);
+        // call method
         totalDepositAmount();
         totalExpenseAmount();
-
         totalMealCount();
         mealRate();
     }
@@ -64,6 +64,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
     }
+
     public  void totalExpenseAmount(){
         apiInterface.totalExpenseCost("Bearer "+token).enqueue(new Callback<homePageDataResponse>() {
             @Override
@@ -92,20 +93,18 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<homePageDataResponse> call, Response<homePageDataResponse> response) {
                 if (response.code()==200){
-                    totalMealTextView.setText("$"+String.valueOf(response.body().getData()));
+                    totalMealTextView.setText(String.valueOf(response.body().getData()));
                 }
                 else if (response.code()==401){
                     Toast.makeText(HomeActivity.this, "Not Authorized to access this route", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(HomeActivity.this, "failed", Toast.LENGTH_SHORT).show();
-
                 }
             }
 
             @Override
             public void onFailure(Call<homePageDataResponse> call, Throwable t) {
                 Toast.makeText(HomeActivity.this, "failed", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
