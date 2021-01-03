@@ -37,4 +37,11 @@ public interface ApiInterface {
     @GET("api/meal")
     Call<TotalExpenseAmountDataResponse> totalMealCount(@Header("Authorization") String authorization);
 
+
+    // calculation
+    //get meal rate
+    @GET("api/meal")
+    Call<TotalExpenseAmountDataResponse> mealRate(@Header("Authorization") String authorization);
+
+
 }
