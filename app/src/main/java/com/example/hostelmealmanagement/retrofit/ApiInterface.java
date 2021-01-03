@@ -1,6 +1,7 @@
 package com.example.hostelmealmanagement.retrofit;
 
 import com.example.hostelmealmanagement.deposit.TotalDepositAmountDataResponse;
+import com.example.hostelmealmanagement.expense.TotalExpenseAmountDataResponse;
 import com.example.hostelmealmanagement.login.LogInGetDataResponse;
 import com.example.hostelmealmanagement.login.LogInSetDataResponse;
 import com.example.hostelmealmanagement.register.RegisterGetDataResponse;
@@ -28,6 +29,6 @@ public interface ApiInterface {
     //Expenses
     //Total Expense Cost
     @GET("api/deposit/")
-    Call<TotalDepositAmountDataResponse> totalExpenseCost(@Header("Authorization") String authorization);
+    Call<TotalExpenseAmountDataResponse> totalExpenseCost(@Header("Authorization") String authorization);
 
 }
