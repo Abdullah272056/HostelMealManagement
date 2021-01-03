@@ -1,5 +1,6 @@
 package com.example.hostelmealmanagement.retrofit;
 
+import com.example.hostelmealmanagement.deposit.TotalDepositAmountDataResponse;
 import com.example.hostelmealmanagement.login.LogInGetDataResponse;
 import com.example.hostelmealmanagement.login.LogInSetDataResponse;
 import com.example.hostelmealmanagement.register.RegisterGetDataResponse;
@@ -7,6 +8,8 @@ import com.example.hostelmealmanagement.register.RegisterSetDataResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
@@ -17,5 +20,9 @@ public interface ApiInterface {
     //logIn
     @POST("api/auth/login")
     Call<LogInGetDataResponse> logInData(@Body LogInSetDataResponse logInSetDataResponse);
+
+    //deposit
+    @GET("api/deposit/")
+    Call<TotalDepositAmountDataResponse> totalDepositAmount(@Header("Authorization") String authorization);
 
 }
