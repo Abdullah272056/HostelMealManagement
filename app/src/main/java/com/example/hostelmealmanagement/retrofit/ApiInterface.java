@@ -39,7 +39,7 @@ public interface ApiInterface {
 
     // calculation
     //get meal rate
-    @GET("api/meal")
+    @GET("api/calculation/meal-rate")
     Call<homePageDataResponse> mealRate(@Header("Authorization") String authorization);
 
 
