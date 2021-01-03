@@ -3,6 +3,7 @@ package com.example.hostelmealmanagement;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -125,7 +126,8 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<homePageDataResponse> call, Throwable t) {
-                Toast.makeText(HomeActivity.this, "failed", Toast.LENGTH_SHORT).show();
+                Log.e("sasa",t.getMessage().toString());
+                Toast.makeText(HomeActivity.this, "failed x", Toast.LENGTH_SHORT).show();
 
             }
         });
