@@ -38,6 +38,7 @@ public class HomeActivity extends AppCompatActivity {
         totalExpenseAmount();
 
         totalMealCount();
+        mealRate();
     }
 
     public void totalDepositAmount(){
@@ -99,6 +100,21 @@ public class HomeActivity extends AppCompatActivity {
                     Toast.makeText(HomeActivity.this, "failed", Toast.LENGTH_SHORT).show();
 
                 }
+            }
+
+            @Override
+            public void onFailure(Call<TotalExpenseAmountDataResponse> call, Throwable t) {
+                Toast.makeText(HomeActivity.this, "failed", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+    public  void mealRate(){
+        apiInterface.mealRate("Bearer "+token).enqueue(new Callback<TotalExpenseAmountDataResponse>() {
+            @Override
+            public void onResponse(Call<TotalExpenseAmountDataResponse> call, Response<TotalExpenseAmountDataResponse> response) {
+                
             }
 
             @Override
