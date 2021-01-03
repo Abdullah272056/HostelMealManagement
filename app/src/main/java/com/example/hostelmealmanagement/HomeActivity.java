@@ -7,7 +7,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hostelmealmanagement.deposit.TotalDepositAmountDataResponse;
-import com.example.hostelmealmanagement.expense.TotalExpenseAmountDataResponse;
 import com.example.hostelmealmanagement.retrofit.ApiInterface;
 import com.example.hostelmealmanagement.retrofit.RetrofitClient;
 
@@ -65,9 +64,9 @@ public class HomeActivity extends AppCompatActivity {
 
     }
     public  void totalExpenseAmount(){
-        apiInterface.totalExpenseCost("Bearer "+token).enqueue(new Callback<TotalExpenseAmountDataResponse>() {
+        apiInterface.totalExpenseCost("Bearer "+token).enqueue(new Callback<homePageDataResponse>() {
             @Override
-            public void onResponse(Call<TotalExpenseAmountDataResponse> call, Response<TotalExpenseAmountDataResponse> response) {
+            public void onResponse(Call<homePageDataResponse> call, Response<homePageDataResponse> response) {
                 if (response.code()==200){
                     totalExpenseTextView.setText("$"+String.valueOf(response.body().getData()));
                 }
@@ -80,7 +79,7 @@ public class HomeActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<TotalExpenseAmountDataResponse> call, Throwable t) {
+            public void onFailure(Call<homePageDataResponse> call, Throwable t) {
                 Toast.makeText(HomeActivity.this, "failed", Toast.LENGTH_SHORT).show();
 
             }
@@ -88,9 +87,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public  void totalMealCount(){
-        apiInterface.totalMealCount("Bearer "+token).enqueue(new Callback<TotalExpenseAmountDataResponse>() {
+        apiInterface.totalMealCount("Bearer "+token).enqueue(new Callback<homePageDataResponse>() {
             @Override
-            public void onResponse(Call<TotalExpenseAmountDataResponse> call, Response<TotalExpenseAmountDataResponse> response) {
+            public void onResponse(Call<homePageDataResponse> call, Response<homePageDataResponse> response) {
                 if (response.code()==200){
                     totalMealTextView.setText("$"+String.valueOf(response.body().getData()));
                 }
@@ -103,7 +102,7 @@ public class HomeActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<TotalExpenseAmountDataResponse> call, Throwable t) {
+            public void onFailure(Call<homePageDataResponse> call, Throwable t) {
                 Toast.makeText(HomeActivity.this, "failed", Toast.LENGTH_SHORT).show();
 
             }
@@ -111,9 +110,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public  void mealRate(){
-        apiInterface.mealRate("Bearer "+token).enqueue(new Callback<TotalExpenseAmountDataResponse>() {
+        apiInterface.mealRate("Bearer "+token).enqueue(new Callback<homePageDataResponse>() {
             @Override
-            public void onResponse(Call<TotalExpenseAmountDataResponse> call, Response<TotalExpenseAmountDataResponse> response) {
+            public void onResponse(Call<homePageDataResponse> call, Response<homePageDataResponse> response) {
                 if (response.code()==200){
                     mealRateTextView.setText("$"+String.valueOf(response.body().getData()));
                 }
@@ -126,7 +125,7 @@ public class HomeActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<TotalExpenseAmountDataResponse> call, Throwable t) {
+            public void onFailure(Call<homePageDataResponse> call, Throwable t) {
                 Toast.makeText(HomeActivity.this, "failed", Toast.LENGTH_SHORT).show();
 
             }

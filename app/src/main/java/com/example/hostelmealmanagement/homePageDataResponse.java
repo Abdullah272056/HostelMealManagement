@@ -1,9 +1,9 @@
-package com.example.hostelmealmanagement.expense;
+package com.example.hostelmealmanagement;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class TotalExpenseAmountDataResponse {
+public class homePageDataResponse {
     @SerializedName("success")
     @Expose
     private Boolean success;
