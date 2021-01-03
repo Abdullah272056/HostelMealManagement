@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         totalMealTextView=findViewById(R.id.totalMealTextViewId);
         mealRateTextView=findViewById(R.id.mealRateTextViewId);
         totalDepositAmount();
-
+        //totalExpenseAmount();
     }
 
     public void totalDepositAmount(){
