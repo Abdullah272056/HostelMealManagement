@@ -147,7 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
             <TextView
-                android:id="@+id/MealRateTextViewId"
+                android:id="@+id/mealRateTextViewId"
                 android:textColor="#FFEB3B"
                 android:paddingBottom="15dp"
                 android:paddingTop="10dp"
