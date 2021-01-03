@@ -5,6 +5,66 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
- 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:layout_marginTop="10dp"
+            android:background="#DAD3D3"
+            android:hint="Expense name"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:id="@+id/expenseNameEditTextId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:layout_marginTop="10dp"
+            android:background="#DAD3D3"
+            android:hint="Type"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:id="@+id/typeEditTextId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:layout_marginTop="10dp"
+            android:background="#DAD3D3"
+            android:hint="Cost"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:id="@+id/costEditTextId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
+            android:layout_marginTop="10dp"
+            android:background="#DAD3D3"
+            android:hint="Select marketer"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:id="@+id/selectMarketerTextViewId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:text="Add"
+            android:layout_marginTop="10dp"
+            android:background="#DAD3D3"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:id="@+id/addExpenseButtonId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 
 </LinearLayout>
