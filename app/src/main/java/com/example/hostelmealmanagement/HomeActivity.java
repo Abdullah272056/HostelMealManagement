@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.hostelmealmanagement.deposit.TotalDepositAmountDataResponse;
 import com.example.hostelmealmanagement.retrofit.ApiInterface;
 import com.example.hostelmealmanagement.retrofit.RetrofitClient;
 

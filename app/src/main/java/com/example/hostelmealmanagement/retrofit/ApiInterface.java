@@ -1,6 +1,5 @@
 package com.example.hostelmealmanagement.retrofit;
 
-import com.example.hostelmealmanagement.deposit.TotalDepositAmountDataResponse;
 import com.example.hostelmealmanagement.homePageDataResponse;
 import com.example.hostelmealmanagement.login.LogInGetDataResponse;
 import com.example.hostelmealmanagement.login.LogInSetDataResponse;
