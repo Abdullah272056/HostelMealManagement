@@ -162,5 +162,11 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/expenseButtonId"
+        android:text="Expense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 
 </LinearLayout>

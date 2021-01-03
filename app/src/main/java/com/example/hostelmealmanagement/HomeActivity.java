@@ -2,8 +2,11 @@ package com.example.hostelmealmanagement;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +23,8 @@ public class HomeActivity extends AppCompatActivity {
     String token;
 
     ApiInterface apiInterface;
+
+    Button expenseButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,11 +39,21 @@ public class HomeActivity extends AppCompatActivity {
         totalExpenseTextView=findViewById(R.id.totalExpenseTextViewId);
         totalMealTextView=findViewById(R.id.totalMealTextViewId);
         mealRateTextView=findViewById(R.id.mealRateTextViewId);
+        expenseButton=findViewById(R.id.expenseButtonId);
         // call method
         totalDepositAmount();
         totalExpenseAmount();
         totalMealCount();
         mealRate();
+
+        expenseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(HomeActivity.this,ExpensesActivity.class);
+                intent.putExtra("token",token);
+                startActivity(intent);
+            }
+        });
     }
 
     public void totalDepositAmount(){
