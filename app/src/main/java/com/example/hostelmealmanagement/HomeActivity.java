@@ -41,9 +41,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void totalDepositAmount(){
-        apiInterface.totalDepositAmount("Bearer "+token).enqueue(new Callback<TotalDepositAmountDataResponse>() {
+        apiInterface.totalDepositAmount("Bearer "+token).enqueue(new Callback<homePageDataResponse>() {
             @Override
-            public void onResponse(Call<TotalDepositAmountDataResponse> call, Response<TotalDepositAmountDataResponse> response) {
+            public void onResponse(Call<homePageDataResponse> call, Response<homePageDataResponse> response) {
                 if (response.code()==200){
                     totalDepositTextView.setText("$"+String.valueOf(response.body().getData()));
                 }
@@ -56,7 +56,7 @@ public class HomeActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<TotalDepositAmountDataResponse> call, Throwable t) {
+            public void onFailure(Call<homePageDataResponse> call, Throwable t) {
                 Toast.makeText(HomeActivity.this, "failed", Toast.LENGTH_SHORT).show();
 
             }

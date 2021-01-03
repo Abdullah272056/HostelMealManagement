@@ -24,7 +24,7 @@ public interface ApiInterface {
 
     //deposit
     @GET("api/deposit/")
-    Call<TotalDepositAmountDataResponse> totalDepositAmount(@Header("Authorization") String authorization);
+    Call<homePageDataResponse> totalDepositAmount(@Header("Authorization") String authorization);
 
     //Expenses
     //Total Expense Cost
