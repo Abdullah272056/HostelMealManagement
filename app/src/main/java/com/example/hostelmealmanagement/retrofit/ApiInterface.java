@@ -28,7 +28,7 @@ public interface ApiInterface {
 
     //Expenses
     //Total Expense Cost
-    @GET("api/deposit/")
+    @GET("api/expenses/cost")
     Call<TotalExpenseAmountDataResponse> totalExpenseCost(@Header("Authorization") String authorization);
 
 }

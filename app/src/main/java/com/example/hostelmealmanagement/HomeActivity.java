@@ -7,6 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hostelmealmanagement.deposit.TotalDepositAmountDataResponse;
+import com.example.hostelmealmanagement.expense.TotalExpenseAmountDataResponse;
 import com.example.hostelmealmanagement.retrofit.ApiInterface;
 import com.example.hostelmealmanagement.retrofit.RetrofitClient;
 
@@ -34,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
         totalMealTextView=findViewById(R.id.totalMealTextViewId);
         mealRateTextView=findViewById(R.id.mealRateTextViewId);
         totalDepositAmount();
-      
+        totalExpenseAmount();
     }
 
     public void totalDepositAmount(){
@@ -59,6 +60,20 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+    }
+    public  void totalExpenseAmount(){
+        apiInterface.totalExpenseCost("Bearer "+token).enqueue(new Callback<TotalExpenseAmountDataResponse>() {
+            @Override
+            public void onResponse(Call<TotalExpenseAmountDataResponse> call, Response<TotalExpenseAmountDataResponse> response) {
+               
+            }
+
+            @Override
+            public void onFailure(Call<TotalExpenseAmountDataResponse> call, Throwable t) {
+                Toast.makeText(HomeActivity.this, "failed", Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
 
