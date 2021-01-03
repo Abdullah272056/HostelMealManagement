@@ -3,6 +3,7 @@ package com.example.hostelmealmanagement.retrofit;
 import com.example.hostelmealmanagement.homePageDataResponse;
 import com.example.hostelmealmanagement.login.LogInGetDataResponse;
 import com.example.hostelmealmanagement.login.LogInSetDataResponse;
+import com.example.hostelmealmanagement.meal.MealRateDataResponse;
 import com.example.hostelmealmanagement.register.RegisterGetDataResponse;
 import com.example.hostelmealmanagement.register.RegisterSetDataResponse;
 
@@ -40,7 +41,7 @@ public interface ApiInterface {
     // calculation
     //get meal rate
     @GET("api/calculation/meal-rate")
-    Call<homePageDataResponse> mealRate(@Header("Authorization") String authorization);
+    Call<MealRateDataResponse> mealRate(@Header("Authorization") String authorization);
 
 
 }

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hostelmealmanagement.meal.MealRateDataResponse;
 import com.example.hostelmealmanagement.retrofit.ApiInterface;
 import com.example.hostelmealmanagement.retrofit.RetrofitClient;
 
@@ -110,9 +111,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public  void mealRate(){
-        apiInterface.mealRate("Bearer "+token).enqueue(new Callback<homePageDataResponse>() {
+        apiInterface.mealRate("Bearer "+token).enqueue(new Callback<MealRateDataResponse>() {
             @Override
-            public void onResponse(Call<homePageDataResponse> call, Response<homePageDataResponse> response) {
+            public void onResponse(Call<MealRateDataResponse> call, Response<MealRateDataResponse> response) {
                 if (response.code()==200){
                     mealRateTextView.setText("$"+String.valueOf(response.body().getData()));
                 }
@@ -125,7 +126,7 @@ public class HomeActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<homePageDataResponse> call, Throwable t) {
+            public void onFailure(Call<MealRateDataResponse> call, Throwable t) {
                 Log.e("sasa",t.getMessage().toString());
                 Toast.makeText(HomeActivity.this, "failed x", Toast.LENGTH_SHORT).show();
 
