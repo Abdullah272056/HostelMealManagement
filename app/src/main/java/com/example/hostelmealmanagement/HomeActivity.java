@@ -65,7 +65,15 @@ public class HomeActivity extends AppCompatActivity {
         apiInterface.totalExpenseCost("Bearer "+token).enqueue(new Callback<TotalExpenseAmountDataResponse>() {
             @Override
             public void onResponse(Call<TotalExpenseAmountDataResponse> call, Response<TotalExpenseAmountDataResponse> response) {
-               
+                if (response.code()==200){
+                    totalExpenseTextView.setText("$"+String.valueOf(response.body().getData()));
+                }
+                else if (response.code()==401){
+                    Toast.makeText(HomeActivity.this, "Not Authorized to access this route", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(HomeActivity.this, "failed", Toast.LENGTH_SHORT).show();
+
+                }
             }
 
             @Override
