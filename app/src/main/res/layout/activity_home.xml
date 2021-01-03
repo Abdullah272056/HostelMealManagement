@@ -43,14 +43,17 @@
                 android:background="#CFCFCF"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
+
             <TextView
-                android:textColor="#31F338"
-                android:paddingBottom="15dp"
-                android:paddingTop="10dp"
+                android:id="@+id/totalDepositTextViewId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="15dp"
                 android:text="0000"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#31F338" />
         </LinearLayout>
         <LinearLayout
             android:paddingBottom="10dp"
@@ -71,14 +74,17 @@
                 android:background="#CFCFCF"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
+
             <TextView
-                android:textColor="#E91E63"
-                android:paddingBottom="15dp"
-                android:paddingTop="10dp"
+                android:id="@+id/totalExpenseTextViewId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="15dp"
                 android:text="0000"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#E91E63" />
 
         </LinearLayout>
 
@@ -112,6 +118,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
             <TextView
+                android:id="@+id/totalMealTextViewId"
                 android:textColor="#74C1FF"
                 android:paddingBottom="15dp"
                 android:paddingTop="10dp"
@@ -140,6 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
             <TextView
+                android:id="@+id/MealRateTextViewId"
                 android:textColor="#FFEB3B"
                 android:paddingBottom="15dp"
                 android:paddingTop="10dp"
