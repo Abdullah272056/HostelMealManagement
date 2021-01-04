@@ -1,6 +1,7 @@
 package com.example.hostelmealmanagement.retrofit;
 
 import com.example.hostelmealmanagement.expense.GetAllExpenseDataResponse;
+import com.example.hostelmealmanagement.get_all_member.GetAllMemberDataResponse;
 import com.example.hostelmealmanagement.homePageDataResponse;
 import com.example.hostelmealmanagement.login.LogInGetDataResponse;
 import com.example.hostelmealmanagement.login.LogInSetDataResponse;
@@ -31,7 +32,7 @@ public interface ApiInterface {
     // getAll member
     //deposit
     @GET("api/auth/member")
-    Call<homePageDataResponse> getAllMember(@Header("Authorization") String authorization);
+    Call<GetAllMemberDataResponse> getAllMember(@Header("Authorization") String authorization);
 
 
 
