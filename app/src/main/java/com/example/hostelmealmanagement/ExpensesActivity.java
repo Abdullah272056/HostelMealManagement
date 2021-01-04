@@ -49,6 +49,7 @@ GetAllExpenseCustomAdapter getAllExpenseCustomAdapter;
 MemberListCustomAdapter memberListCustomAdapter;
 
 ApiInterface apiInterface;
+AlertDialog alertDialog1;
 
 MemberListCustomAdapter.OnContactClickListener onContactClickListener;
     @Override
@@ -133,13 +134,13 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                 LayoutInflater layoutInflater   =LayoutInflater.from(ExpensesActivity.this);
                 final View view                       =layoutInflater.inflate(R.layout.member_recycler_view,null);
                 builder.setView(view);
-                final AlertDialog alertDialog   = builder.create();
+               alertDialog1   = builder.create();
                 memberRecyclerView=view.findViewById(R.id.memberRecyclerViewId);
                 memberProgressBar=view.findViewById(R.id.memberProgressBarId);
 
 
                 //Toast.makeText(ExpensesActivity.this, getAllMemberDataList.size()+"sss", Toast.LENGTH_SHORT).show();
-                alertDialog.show();
+                alertDialog1.show();
 
 
 
@@ -167,7 +168,6 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                         else {
                             Toast.makeText(ExpensesActivity.this, "fff", Toast.LENGTH_SHORT).show();
                         }
-
                         memberProgressBar.setVisibility(View.INVISIBLE);
                     }
                     @Override
@@ -186,6 +186,7 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
 
         @Override
         public void onContactClick(int position){
+            alertDialog1.dismiss();
             Toast.makeText(this, "ssssdd", Toast.LENGTH_SHORT).show();
             selectMarketerTextView.setText(String.valueOf(getAllMemberDataList.get(position).getName()));
 
