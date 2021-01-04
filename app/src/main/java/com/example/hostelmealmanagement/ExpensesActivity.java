@@ -32,7 +32,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ExpensesActivity extends AppCompatActivity {
+public class ExpensesActivity extends AppCompatActivity implements
+        MemberListCustomAdapter.OnContactClickListener{
 FloatingActionButton addExpenseButton;
 TextView selectMarketerTextView;
 RecyclerView expenseRecyclerView;
@@ -46,10 +47,14 @@ GetAllExpenseCustomAdapter getAllExpenseCustomAdapter;
 MemberListCustomAdapter memberListCustomAdapter;
 
     ApiInterface apiInterface;
+
+
+    MemberListCustomAdapter.OnContactClickListener onContactClickListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenses);
+        onContactClickListener=this;
         //receive token
         token=getIntent().getStringExtra("token");
         //initialize apiInterface
@@ -137,7 +142,7 @@ MemberListCustomAdapter memberListCustomAdapter;
                                     memberRecyclerView=view.findViewById(R.id.memberRecyclerViewId);
 
                                     memberListCustomAdapter=new MemberListCustomAdapter(
-                                            ExpensesActivity.this,token,getAllMemberDataList);
+                                            ExpensesActivity.this,token,getAllMemberDataList,onContactClickListener);
 
                                     memberRecyclerView.setLayoutManager(new LinearLayoutManager(ExpensesActivity.this));
                                     memberRecyclerView.setAdapter(memberListCustomAdapter);
@@ -167,4 +172,8 @@ MemberListCustomAdapter memberListCustomAdapter;
     }
 
 
+    @Override
+    public void onContactClick(int position) {
+        Toast.makeText(this, "ssssdd", Toast.LENGTH_SHORT).show();
+    }
 }
