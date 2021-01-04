@@ -15,6 +15,7 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
+    //Auth
     //registration
     @POST("api/auth/register")
     Call<RegisterGetDataResponse> registrationData(@Body RegisterSetDataResponse registerSetDataResponse);
@@ -26,6 +27,13 @@ public interface ApiInterface {
     //deposit
     @GET("api/deposit/")
     Call<homePageDataResponse> totalDepositAmount(@Header("Authorization") String authorization);
+
+    // getAll member
+    //deposit
+    @GET("api/auth/member")
+    Call<homePageDataResponse> getAllMember(@Header("Authorization") String authorization);
+
+
 
     //Expenses
     //Total Expense Cost
