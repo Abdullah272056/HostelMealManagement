@@ -36,6 +36,7 @@ public class ExpensesActivity extends AppCompatActivity {
 FloatingActionButton addExpenseButton;
 TextView selectMarketerTextView;
 RecyclerView expenseRecyclerView;
+RecyclerView memberRecyclerView;
 String token;
 List<GetAllExpenseData> getAllExpenseDataList;
 List<GetAllMemberData> getAllMemberDataList;
@@ -127,13 +128,22 @@ MemberListCustomAdapter memberListCustomAdapter;
                                 getAllMemberDataList=new ArrayList<>();
                                 getAllMemberDataList.addAll(response.body().getGetAllMemberDataList());
                                 if (getAllMemberDataList.size()>0){
+                                    AlertDialog.Builder builder     =new AlertDialog.Builder(ExpensesActivity.this);
+                                    LayoutInflater layoutInflater   =LayoutInflater.from(ExpensesActivity.this);
+                                    View view                       =layoutInflater.inflate(R.layout.member_recycler_view,null);
+                                    builder.setView(view);
+                                    final AlertDialog alertDialog   = builder.create();
+
+                                    memberRecyclerView=view.findViewById(R.id.memberRecyclerViewId);
+
                                     memberListCustomAdapter=new MemberListCustomAdapter(
                                             ExpensesActivity.this,token,getAllMemberDataList);
 
-                                    expenseRecyclerView.setLayoutManager(new LinearLayoutManager(ExpensesActivity.this));
-                                    expenseRecyclerView.setAdapter(getAllExpenseCustomAdapter);
+                                    memberRecyclerView.setLayoutManager(new LinearLayoutManager(ExpensesActivity.this));
+                                    memberRecyclerView.setAdapter(memberListCustomAdapter);
 
                                     Toast.makeText(ExpensesActivity.this, getAllMemberDataList.size()+"sss", Toast.LENGTH_SHORT).show();
+                                    alertDialog.show();
                                 }
                             }
                         }else if (response.code()==401){
