@@ -20,6 +20,7 @@ import com.example.hostelmealmanagement.expense.GetAllExpenseData;
 import com.example.hostelmealmanagement.expense.GetAllExpenseDataResponse;
 import com.example.hostelmealmanagement.get_all_member.GetAllMemberData;
 import com.example.hostelmealmanagement.get_all_member.GetAllMemberDataResponse;
+import com.example.hostelmealmanagement.get_all_member.MemberListCustomAdapter;
 import com.example.hostelmealmanagement.retrofit.ApiInterface;
 import com.example.hostelmealmanagement.retrofit.RetrofitClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -39,7 +40,9 @@ String token;
 List<GetAllExpenseData> getAllExpenseDataList;
 List<GetAllMemberData> getAllMemberDataList;
 
+
 GetAllExpenseCustomAdapter getAllExpenseCustomAdapter;
+MemberListCustomAdapter memberListCustomAdapter;
 
     ApiInterface apiInterface;
     @Override
@@ -124,6 +127,12 @@ GetAllExpenseCustomAdapter getAllExpenseCustomAdapter;
                                 getAllMemberDataList=new ArrayList<>();
                                 getAllMemberDataList.addAll(response.body().getGetAllMemberDataList());
                                 if (getAllMemberDataList.size()>0){
+                                    memberListCustomAdapter=new MemberListCustomAdapter(
+                                            ExpensesActivity.this,token,getAllMemberDataList);
+
+                                    expenseRecyclerView.setLayoutManager(new LinearLayoutManager(ExpensesActivity.this));
+                                    expenseRecyclerView.setAdapter(getAllExpenseCustomAdapter);
+
                                     Toast.makeText(ExpensesActivity.this, getAllMemberDataList.size()+"sss", Toast.LENGTH_SHORT).show();
                                 }
                             }
