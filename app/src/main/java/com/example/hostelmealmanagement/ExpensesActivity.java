@@ -11,10 +11,16 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.hostelmealmanagement.expense.GetAllExpenseDataResponse;
 import com.example.hostelmealmanagement.retrofit.ApiInterface;
 import com.example.hostelmealmanagement.retrofit.RetrofitClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ExpensesActivity extends AppCompatActivity {
 FloatingActionButton addExpenseButton;
@@ -42,9 +48,29 @@ Spinner spinner;
         });
 
 
-
+        getAllExpense();
 
     }
+        public  void getAllExpense(){
+               apiInterface.getAllExpense("Bearer "+token).enqueue(new Callback<GetAllExpenseDataResponse>() {
+                   @Override
+                   public void onResponse(Call<GetAllExpenseDataResponse> call, Response<GetAllExpenseDataResponse> response) {
+                       if (response.code()==200){
+                           Toast.makeText(ExpensesActivity.this, "success", Toast.LENGTH_SHORT).show();
+                       }else {
+                           Toast.makeText(ExpensesActivity.this, "error", Toast.LENGTH_SHORT).show();
+
+                       }
+                   }
+
+                   @Override
+                   public void onFailure(Call<GetAllExpenseDataResponse> call, Throwable t) {
+                       Toast.makeText(ExpensesActivity.this, "failed", Toast.LENGTH_SHORT).show();
+
+                   }
+               });
+
+        }
 
     private void addCustomerInformation(){
 
