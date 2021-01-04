@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.hostelmealmanagement.expense.GetAllExpenseCustomAdapter;
 import com.example.hostelmealmanagement.expense.GetAllExpenseData;
 import com.example.hostelmealmanagement.expense.GetAllExpenseDataResponse;
+import com.example.hostelmealmanagement.get_all_member.GetAllMemberDataResponse;
 import com.example.hostelmealmanagement.retrofit.ApiInterface;
 import com.example.hostelmealmanagement.retrofit.RetrofitClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -114,8 +115,25 @@ Spinner spinner;
         selectMarketerTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                apiInterface.getAllMember("Bearer "+token).enqueue(new Callback<GetAllMemberDataResponse>() {
+                    @Override
+                    public void onResponse(Call<GetAllMemberDataResponse> call, Response<GetAllMemberDataResponse> response) {
+                        if (response.code()==200){
+                            Toast.makeText(ExpensesActivity.this, "sss", Toast.LENGTH_SHORT).show();
+                        }else if (response.code()==401){
+                            Toast.makeText(ExpensesActivity.this, "Not Authorized to access this route", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(ExpensesActivity.this, "fff", Toast.LENGTH_SHORT).show();
+                        }
+                    }
 
-                Toast.makeText(ExpensesActivity.this, "ssss", Toast.LENGTH_SHORT).show();
+                    @Override
+                    public void onFailure(Call<GetAllMemberDataResponse> call, Throwable t) {
+                        Toast.makeText(ExpensesActivity.this, "fff", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
         });
 
