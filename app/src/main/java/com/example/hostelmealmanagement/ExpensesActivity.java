@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.hostelmealmanagement.expense.GetAllExpenseCustomAdapter;
 import com.example.hostelmealmanagement.expense.GetAllExpenseData;
 import com.example.hostelmealmanagement.expense.GetAllExpenseDataResponse;
+import com.example.hostelmealmanagement.get_all_member.GetAllMemberData;
 import com.example.hostelmealmanagement.get_all_member.GetAllMemberDataResponse;
 import com.example.hostelmealmanagement.retrofit.ApiInterface;
 import com.example.hostelmealmanagement.retrofit.RetrofitClient;
@@ -36,10 +37,10 @@ TextView selectMarketerTextView;
 RecyclerView expenseRecyclerView;
 String token;
 List<GetAllExpenseData> getAllExpenseDataList;
+List<GetAllMemberData> getAllMemberDataList;
 
 GetAllExpenseCustomAdapter getAllExpenseCustomAdapter;
 
-Spinner spinner;
     ApiInterface apiInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,7 +120,13 @@ Spinner spinner;
                     @Override
                     public void onResponse(Call<GetAllMemberDataResponse> call, Response<GetAllMemberDataResponse> response) {
                         if (response.code()==200){
-                            Toast.makeText(ExpensesActivity.this, "sss", Toast.LENGTH_SHORT).show();
+                            if (response.body().getSuccess()==true){
+                                getAllMemberDataList=new ArrayList<>();
+                                getAllMemberDataList.addAll(response.body().getGetAllMemberDataList());
+                                if (getAllMemberDataList.size()>0){
+                                    Toast.makeText(ExpensesActivity.this, getAllMemberDataList.size()+"sss", Toast.LENGTH_SHORT).show();
+                                }
+                            }
                         }else if (response.code()==401){
                             Toast.makeText(ExpensesActivity.this, "Not Authorized to access this route", Toast.LENGTH_SHORT).show();
                         }
