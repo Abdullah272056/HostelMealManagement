@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,12 +33,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ExpensesActivity extends AppCompatActivity implements
-        MemberListCustomAdapter.OnContactClickListener{
+public class ExpensesActivity extends AppCompatActivity implements MemberListCustomAdapter.OnContactClickListener{
 FloatingActionButton addExpenseButton;
 TextView selectMarketerTextView;
 RecyclerView expenseRecyclerView;
 RecyclerView memberRecyclerView;
+ProgressBar expenseProgressBar;
 String token;
 List<GetAllExpenseData> getAllExpenseDataList;
 List<GetAllMemberData> getAllMemberDataList;
@@ -46,10 +47,9 @@ List<GetAllMemberData> getAllMemberDataList;
 GetAllExpenseCustomAdapter getAllExpenseCustomAdapter;
 MemberListCustomAdapter memberListCustomAdapter;
 
-    ApiInterface apiInterface;
+ApiInterface apiInterface;
 
-
-    MemberListCustomAdapter.OnContactClickListener onContactClickListener;
+MemberListCustomAdapter.OnContactClickListener onContactClickListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +63,7 @@ MemberListCustomAdapter memberListCustomAdapter;
         addExpenseButton=findViewById(R.id.addExpenseButtonId);
        // selectMarketerTextView=findViewById(R.id.selectMarketerTextViewId);
         expenseRecyclerView=findViewById(R.id.expenseRecyclerViewId);
+        expenseProgressBar=findViewById(R.id.expenseProgressBarId);
 
         addExpenseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,17 +104,19 @@ MemberListCustomAdapter memberListCustomAdapter;
                       }catch (Exception e){
 
                       }
+                       expenseProgressBar.setVisibility(View.INVISIBLE);
                    }
 
                    @Override
                    public void onFailure(Call<GetAllExpenseDataResponse> call, Throwable t) {
                        Toast.makeText(ExpensesActivity.this, "failed", Toast.LENGTH_SHORT).show();
+                       expenseProgressBar.setVisibility(View.INVISIBLE);
                    }
                });
 
         }
 
-    private void addExpense(){
+        private void addExpense(){
 
         AlertDialog.Builder builder     =new AlertDialog.Builder(ExpensesActivity.this);
         LayoutInflater layoutInflater   =LayoutInflater.from(ExpensesActivity.this);
@@ -170,10 +173,10 @@ MemberListCustomAdapter memberListCustomAdapter;
     }
 
 
-    @Override
-    public void onContactClick(int position) {
-        Toast.makeText(this, "ssssdd", Toast.LENGTH_SHORT).show();
-        selectMarketerTextView.setText(String.valueOf(getAllMemberDataList.get(position).getName()));
+        @Override
+        public void onContactClick(int position){
+            Toast.makeText(this, "ssssdd", Toast.LENGTH_SHORT).show();
+            selectMarketerTextView.setText(String.valueOf(getAllMemberDataList.get(position).getName()));
 
-    }
+        }
 }
