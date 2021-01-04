@@ -50,14 +50,14 @@ Spinner spinner;
         apiInterface = RetrofitClient.getRetrofit("http://hostel-meal-calc.herokuapp.com/").create(ApiInterface.class);
 
         addExpenseButton=findViewById(R.id.addExpenseButtonId);
-        selectMarketerTextView=findViewById(R.id.selectMarketerTextViewId);
+       // selectMarketerTextView=findViewById(R.id.selectMarketerTextViewId);
         expenseRecyclerView=findViewById(R.id.expenseRecyclerViewId);
 
         addExpenseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addCustomerInformation();
-            }
+                addExpense();
+              }
         });
 
 
@@ -102,7 +102,7 @@ Spinner spinner;
 
         }
 
-    private void addCustomerInformation(){
+    private void addExpense(){
 
         AlertDialog.Builder builder     =new AlertDialog.Builder(ExpensesActivity.this);
         LayoutInflater layoutInflater   =LayoutInflater.from(ExpensesActivity.this);
@@ -110,14 +110,16 @@ Spinner spinner;
         builder.setView(view);
         final AlertDialog alertDialog   = builder.create();
 
-//        spinner=view.findViewById(R.id.select);
-//
-//        //Creating the ArrayAdapter instance having the country list
-//        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,contacts);
-//        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        //Setting the ArrayAdapter data on the Spinner
-//        spinner.setAdapter(aa);
+        selectMarketerTextView=view.findViewById(R.id.selectMarketerTextViewId);
+        selectMarketerTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ExpensesActivity.this, "ssss", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         alertDialog.show();
     }
+
+
 }
