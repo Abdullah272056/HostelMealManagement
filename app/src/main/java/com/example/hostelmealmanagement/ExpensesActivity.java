@@ -38,6 +38,7 @@ FloatingActionButton addExpenseButton;
 TextView selectMarketerTextView;
 RecyclerView expenseRecyclerView;
 RecyclerView memberRecyclerView;
+ProgressBar memberProgressBar;
 ProgressBar expenseProgressBar;
 String token;
 List<GetAllExpenseData> getAllExpenseDataList;
@@ -128,15 +129,18 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
         selectMarketerTextView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
                 AlertDialog.Builder builder     =new AlertDialog.Builder(ExpensesActivity.this);
                 LayoutInflater layoutInflater   =LayoutInflater.from(ExpensesActivity.this);
                 final View view                       =layoutInflater.inflate(R.layout.member_recycler_view,null);
                 builder.setView(view);
                 final AlertDialog alertDialog   = builder.create();
+                memberRecyclerView=view.findViewById(R.id.memberRecyclerViewId);
+                memberProgressBar=view.findViewById(R.id.memberProgressBarId);
+
 
                 //Toast.makeText(ExpensesActivity.this, getAllMemberDataList.size()+"sss", Toast.LENGTH_SHORT).show();
                 alertDialog.show();
+
 
 
 
@@ -148,13 +152,13 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                                 getAllMemberDataList=new ArrayList<>();
                                 getAllMemberDataList.addAll(response.body().getGetAllMemberDataList());
                                 if (getAllMemberDataList.size()>0){
-                                    memberRecyclerView=view.findViewById(R.id.memberRecyclerViewId);
 
                                     memberListCustomAdapter=new MemberListCustomAdapter(
                                             ExpensesActivity.this,token,getAllMemberDataList,onContactClickListener);
 
                                     memberRecyclerView.setLayoutManager(new LinearLayoutManager(ExpensesActivity.this));
                                     memberRecyclerView.setAdapter(memberListCustomAdapter);
+
                                 }
                             }
                         }else if (response.code()==401){
@@ -163,10 +167,14 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                         else {
                             Toast.makeText(ExpensesActivity.this, "fff", Toast.LENGTH_SHORT).show();
                         }
+
+                        memberProgressBar.setVisibility(View.INVISIBLE);
                     }
                     @Override
                     public void onFailure(Call<GetAllMemberDataResponse> call, Throwable t) {
                         Toast.makeText(ExpensesActivity.this, "fff", Toast.LENGTH_SHORT).show();
+                        memberProgressBar.setVisibility(View.INVISIBLE);
+
                     }
                 });
             }
