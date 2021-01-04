@@ -2,6 +2,8 @@ package com.example.hostelmealmanagement;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -13,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hostelmealmanagement.expense.GetAllExpenseCustomAdapter;
 import com.example.hostelmealmanagement.expense.GetAllExpenseData;
 import com.example.hostelmealmanagement.expense.GetAllExpenseDataResponse;
 import com.example.hostelmealmanagement.retrofit.ApiInterface;
@@ -29,8 +32,11 @@ import retrofit2.Response;
 public class ExpensesActivity extends AppCompatActivity {
 FloatingActionButton addExpenseButton;
 TextView selectMarketerTextView;
+RecyclerView expenseRecyclerView;
 String token;
 List<GetAllExpenseData> getAllExpenseDataList;
+
+GetAllExpenseCustomAdapter getAllExpenseCustomAdapter;
 
 Spinner spinner;
     ApiInterface apiInterface;
@@ -45,6 +51,7 @@ Spinner spinner;
 
         addExpenseButton=findViewById(R.id.addExpenseButtonId);
         selectMarketerTextView=findViewById(R.id.selectMarketerTextViewId);
+        expenseRecyclerView=findViewById(R.id.expenseRecyclerViewId);
 
         addExpenseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,9 +70,18 @@ Spinner spinner;
                    public void onResponse(Call<GetAllExpenseDataResponse> call, Response<GetAllExpenseDataResponse> response) {
                       try {
                        if (response.code()==200){
+                           if (response.body().getSuccess()==true){
                            getAllExpenseDataList=new ArrayList<>();
                            getAllExpenseDataList.addAll(response.body().getGetAllExpenseDataList());
+                           if (getAllExpenseDataList.size ()>0){
+                               getAllExpenseCustomAdapter=new GetAllExpenseCustomAdapter(
+                                       ExpensesActivity.this,token,getAllExpenseDataList);
+                               expenseRecyclerView.setLayoutManager(new LinearLayoutManager(ExpensesActivity.this));
+                               expenseRecyclerView.setAdapter(getAllExpenseCustomAdapter);
+                           }
+
                            Toast.makeText(ExpensesActivity.this, String.valueOf(getAllExpenseDataList.size())+"success", Toast.LENGTH_SHORT).show();
+                           }
                        }
                        else if (response.code()==401){
                            Toast.makeText(ExpensesActivity.this, "Not Authorized to access this route", Toast.LENGTH_SHORT).show();

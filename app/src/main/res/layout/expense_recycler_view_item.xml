@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout
+        android:background="#A7EFF8"
         android:gravity="center"
         android:weightSum="5"
         android:layout_width="match_parent"
@@ -67,12 +68,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content">
            <ImageView
+               android:layout_marginBottom="5dp"
                android:id="@+id/editImageViewId"
                android:padding="10dp"
                android:src="@drawable/ic_baseline_edit_24"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"/>
             <ImageView
+                android:layout_marginBottom="5dp"
                 android:id="@+id/deleteImageViewId"
                 android:padding="10dp"
                 android:src="@drawable/ic_baseline_delete_24"
