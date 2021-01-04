@@ -122,7 +122,7 @@ MemberListCustomAdapter memberListCustomAdapter;
         final AlertDialog alertDialog   = builder.create();
 
         selectMarketerTextView=view.findViewById(R.id.selectMarketerTextViewId);
-        selectMarketerTextView.setOnClickListener(new View.OnClickListener() {
+        selectMarketerTextView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 apiInterface.getAllMember("Bearer "+token).enqueue(new Callback<GetAllMemberDataResponse>() {
@@ -158,13 +158,11 @@ MemberListCustomAdapter memberListCustomAdapter;
                             Toast.makeText(ExpensesActivity.this, "fff", Toast.LENGTH_SHORT).show();
                         }
                     }
-
                     @Override
                     public void onFailure(Call<GetAllMemberDataResponse> call, Throwable t) {
                         Toast.makeText(ExpensesActivity.this, "fff", Toast.LENGTH_SHORT).show();
                     }
                 });
-
             }
         });
 
@@ -175,5 +173,7 @@ MemberListCustomAdapter memberListCustomAdapter;
     @Override
     public void onContactClick(int position) {
         Toast.makeText(this, "ssssdd", Toast.LENGTH_SHORT).show();
+        selectMarketerTextView.setText(String.valueOf(getAllMemberDataList.get(position).getName()));
+
     }
 }
