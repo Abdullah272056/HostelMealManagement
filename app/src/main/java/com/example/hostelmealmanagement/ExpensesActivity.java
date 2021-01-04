@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.hostelmealmanagement.retrofit.ApiInterface;
+import com.example.hostelmealmanagement.retrofit.RetrofitClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ExpensesActivity extends AppCompatActivity {
@@ -19,13 +21,16 @@ FloatingActionButton addExpenseButton;
 TextView selectMarketerTextView;
 String token;
 Spinner spinner;
-    String contacts[]={"Ajay","Sachin","Sumit","Tarun","Yogesh"};
+    ApiInterface apiInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenses);
         //receive token
         token=getIntent().getStringExtra("token");
+        //initialize apiInterface
+        apiInterface = RetrofitClient.getRetrofit("http://hostel-meal-calc.herokuapp.com/").create(ApiInterface.class);
+
         addExpenseButton=findViewById(R.id.addExpenseButtonId);
         selectMarketerTextView=findViewById(R.id.selectMarketerTextViewId);
 
