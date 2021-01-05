@@ -22,6 +22,8 @@ import android.widget.Toast;
 import com.example.hostelmealmanagement.expense.GetAllExpenseCustomAdapter;
 import com.example.hostelmealmanagement.expense.GetAllExpenseData;
 import com.example.hostelmealmanagement.expense.GetAllExpenseDataResponse;
+import com.example.hostelmealmanagement.expense.create_expense.CreateExpenseGateDataResponse;
+import com.example.hostelmealmanagement.expense.create_expense.CreateExpenseSetData;
 import com.example.hostelmealmanagement.get_all_member.GetAllMemberData;
 import com.example.hostelmealmanagement.get_all_member.GetAllMemberDataResponse;
 import com.example.hostelmealmanagement.get_all_member.MemberListCustomAdapter;
@@ -52,6 +54,7 @@ ProgressBar expenseProgressBar;
 String token;
 List<GetAllExpenseData> getAllExpenseDataList;
 List<GetAllMemberData> getAllMemberDataList;
+String marketerId=null;
 
 
 GetAllExpenseCustomAdapter getAllExpenseCustomAdapter;
@@ -228,6 +231,23 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                         selectMarketerTextView.requestFocus();
                         return;
                     }
+                    if (marketerId.length()>0 && marketerId!=null){
+                        CreateExpenseSetData createExpenseSetData= new CreateExpenseSetData(marketerId,Integer.parseInt(expenseCost),expenseType,expenseName);
+                        apiInterface.createExpense("Bearer "+token,createExpenseSetData).enqueue(new Callback<CreateExpenseGateDataResponse>() {
+                            @Override
+                            public void onResponse(Call<CreateExpenseGateDataResponse> call, Response<CreateExpenseGateDataResponse> response) {
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<CreateExpenseGateDataResponse> call, Throwable t) {
+                            }
+                        });
+                    }else {
+                        Toast.makeText(ExpensesActivity.this, "Marketer Id not found", Toast.LENGTH_SHORT).show();
+                    }
+
+
 
 
 
@@ -247,6 +267,7 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
         public void onContactClick(int position){
             alertDialog1.dismiss();
             Toast.makeText(this, "ssssdd", Toast.LENGTH_SHORT).show();
+            marketerId=String.valueOf(getAllMemberDataList.get(position).getId());
             selectMarketerTextView.setText(String.valueOf(getAllMemberDataList.get(position).getName()));
             selectMarketerTextView.setError(null);
         }
