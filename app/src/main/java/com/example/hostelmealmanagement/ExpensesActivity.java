@@ -238,6 +238,8 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                             public void onResponse(Call<CreateExpenseGateDataResponse> call, Response<CreateExpenseGateDataResponse> response) {
                                 if (response.code()==200){
                                     Toast.makeText(ExpensesActivity.this, "create success", Toast.LENGTH_SHORT).show();
+                                    alertDialog.dismiss();
+                                    getAllExpense();
                                 }
                                 else if(response.code()==400){
                                     Toast.makeText(ExpensesActivity.this, "User not valid", Toast.LENGTH_SHORT).show();
