@@ -1,5 +1,6 @@
 package com.example.hostelmealmanagement.retrofit;
 
+import com.example.hostelmealmanagement.expense.DeleteExpenseDataResponse;
 import com.example.hostelmealmanagement.expense.GetAllExpenseDataResponse;
 import com.example.hostelmealmanagement.expense.create_expense.CreateExpenseGateDataResponse;
 import com.example.hostelmealmanagement.expense.create_expense.CreateExpenseSetData;
@@ -51,7 +52,7 @@ public interface ApiInterface {
     Call<CreateExpenseGateDataResponse> createExpense(@Header("Authorization") String authorization,@Body CreateExpenseSetData createExpenseSetData);
     //delete Expense
     @DELETE("api/expenses/{id}")
-    Call<HomePageDataResponse> deleteExpense(@Header("Authorization") String authorization, @Path("id") String id);
+    Call<DeleteExpenseDataResponse> deleteExpense(@Header("Authorization") String authorization, @Path("id") String id);
 
 
     //meal
