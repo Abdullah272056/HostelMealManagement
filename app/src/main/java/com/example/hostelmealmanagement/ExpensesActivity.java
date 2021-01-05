@@ -236,11 +236,19 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                         apiInterface.createExpense("Bearer "+token,createExpenseSetData).enqueue(new Callback<CreateExpenseGateDataResponse>() {
                             @Override
                             public void onResponse(Call<CreateExpenseGateDataResponse> call, Response<CreateExpenseGateDataResponse> response) {
-
+                                if (response.code()==200){
+                                    Toast.makeText(ExpensesActivity.this, "create success", Toast.LENGTH_SHORT).show();
+                                }
+                                else if(response.code()==400){
+                                    Toast.makeText(ExpensesActivity.this, "User not valid", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    Toast.makeText(ExpensesActivity.this, "failed !try again", Toast.LENGTH_SHORT).show();
+                                }
                             }
 
                             @Override
                             public void onFailure(Call<CreateExpenseGateDataResponse> call, Throwable t) {
+                                Toast.makeText(ExpensesActivity.this, "failed !try again", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }else {
