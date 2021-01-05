@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -35,7 +37,13 @@ import retrofit2.Response;
 
 public class ExpensesActivity extends AppCompatActivity implements MemberListCustomAdapter.OnContactClickListener{
 FloatingActionButton addExpenseButton;
+
+// 1s alert
 TextView selectMarketerTextView;
+Button saveExpenseButton;
+EditText expenseNameEditText,typeEditText,costEditText;
+
+
 RecyclerView expenseRecyclerView;
 RecyclerView memberRecyclerView;
 ProgressBar memberProgressBar;
@@ -124,6 +132,7 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
         builder.setView(view);
         final AlertDialog alertDialog   = builder.create();
 
+        saveExpenseButton=view.findViewById(R.id.saveExpenseButtonId);
         selectMarketerTextView=view.findViewById(R.id.selectMarketerTextViewId);
         selectMarketerTextView.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -132,9 +141,16 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                 LayoutInflater layoutInflater   =LayoutInflater.from(ExpensesActivity.this);
                 final View view                       =layoutInflater.inflate(R.layout.member_recycler_view,null);
                 builder.setView(view);
-               alertDialog1   = builder.create();
+                alertDialog1 = builder.create();
+
+                expenseNameEditText=view.findViewById(R.id.expenseNameEditTextId);
+                typeEditText=view.findViewById(R.id.typeEditTextId);
+                costEditText=view.findViewById(R.id.costEditTextId);
                 memberRecyclerView=view.findViewById(R.id.memberRecyclerViewId);
                 memberProgressBar=view.findViewById(R.id.memberProgressBarId);
+
+
+
 
 
                 //Toast.makeText(ExpensesActivity.this, getAllMemberDataList.size()+"sss", Toast.LENGTH_SHORT).show();
@@ -157,7 +173,6 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
 
                                     memberRecyclerView.setLayoutManager(new LinearLayoutManager(ExpensesActivity.this));
                                     memberRecyclerView.setAdapter(memberListCustomAdapter);
-
                                 }
                             }
                         }else if (response.code()==401){
@@ -177,6 +192,16 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                 });
             }
         });
+
+            saveExpenseButton.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                   
+
+                }
+            });
+
+
 
         alertDialog.show();
     }

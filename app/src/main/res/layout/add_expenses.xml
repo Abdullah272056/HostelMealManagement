@@ -55,14 +55,14 @@
             android:id="@+id/selectMarketerTextViewId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        
+
         <Button
             android:text="Add"
             android:layout_marginTop="10dp"
             android:background="#DAD3D3"
             android:textSize="20sp"
             android:padding="10dp"
-            android:id="@+id/addExpenseButtonId"
+            android:id="@+id/saveExpenseButtonId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
