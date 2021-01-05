@@ -232,6 +232,7 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                         return;
                     }
                     if (marketerId.length()>0 && marketerId!=null){
+                        
                         CreateExpenseSetData createExpenseSetData= new CreateExpenseSetData(marketerId,Integer.parseInt(expenseCost),expenseType,expenseName);
                         apiInterface.createExpense("Bearer "+token,createExpenseSetData).enqueue(new Callback<CreateExpenseGateDataResponse>() {
                             @Override
