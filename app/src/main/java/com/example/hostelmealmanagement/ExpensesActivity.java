@@ -93,13 +93,11 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                                expenseRecyclerView.setLayoutManager(new LinearLayoutManager(ExpensesActivity.this));
                                expenseRecyclerView.setAdapter(getAllExpenseCustomAdapter);
                            }
-
                            Toast.makeText(ExpensesActivity.this, String.valueOf(getAllExpenseDataList.size())+"success", Toast.LENGTH_SHORT).show();
                            }
                        }
                        else if (response.code()==401){
                            Toast.makeText(ExpensesActivity.this, "Not Authorized to access this route", Toast.LENGTH_SHORT).show();
-
                        }else {
                            Toast.makeText(ExpensesActivity.this, "error", Toast.LENGTH_SHORT).show();
                        }
