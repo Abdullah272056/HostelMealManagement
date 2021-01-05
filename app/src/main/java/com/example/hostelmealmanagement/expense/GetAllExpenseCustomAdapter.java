@@ -1,6 +1,7 @@
 package com.example.hostelmealmanagement.expense;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hostelmealmanagement.R;
@@ -23,6 +25,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class GetAllExpenseCustomAdapter extends RecyclerView.Adapter<GetAllExpenseCustomAdapter.MyViewHolder> {
 
@@ -46,7 +52,7 @@ public class GetAllExpenseCustomAdapter extends RecyclerView.Adapter<GetAllExpen
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    public void onBindViewHolder(@NonNull GetAllExpenseCustomAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GetAllExpenseCustomAdapter.MyViewHolder holder, final int position) {
         holder.marketerTextView.setText(String.valueOf(getAllExpenseDataList.get(position).getGetAllExpenseMarketerData().getName()));
 
         String string=String.valueOf(getAllExpenseDataList.get(position).getDateAdded());
@@ -61,6 +67,7 @@ public class GetAllExpenseCustomAdapter extends RecyclerView.Adapter<GetAllExpen
         holder.deleteExpenseImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                deleteExpense(position);
                 Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
             }
         });
@@ -88,4 +95,51 @@ public class GetAllExpenseCustomAdapter extends RecyclerView.Adapter<GetAllExpen
 
         }
     }
+
+
+
+    private  void  deleteExpense(final int position){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setCancelable(false);
+        builder.setMessage("Do you want to Delete?");
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+//                apiInterface.deleteCustomer("Bearer "+token,customerInformationList.get(position).getId().toString())
+//                        .enqueue(new Callback<CustomerDeleteResponse>() {
+//                            @Override
+//                            public void onResponse(Call<CustomerDeleteResponse> call, Response<CustomerDeleteResponse> response) {
+//                                // CustomerDeleteResponse customerDeleteResponse=response.body();
+//                                if (response.isSuccessful()){
+//                                    if (response.body().getSuccess()==true){
+//                                        Toast.makeText(context, "success delete", Toast.LENGTH_SHORT).show();
+//
+//                                    }
+//                                }
+//
+//                                ((CustomerActivity)context).getAllCustomer();
+//                            }
+//
+//                            @Override
+//                            public void onFailure(Call<CustomerDeleteResponse> call, Throwable t) {
+//                                Toast.makeText(context, "fail delete", Toast.LENGTH_SHORT).show();
+//
+//                            }
+//                        });
+
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+
 }
