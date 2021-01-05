@@ -112,31 +112,33 @@ public class GetAllExpenseCustomAdapter extends RecyclerView.Adapter<GetAllExpen
         builder.setCancelable(false);
         builder.setMessage("Do you want to Delete?");
 
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which) {
-            apiInterface.deleteExpense("Bearer "+token,getAllExpenseDataList.get(position1).getId())
-                    .enqueue(new Callback<HomePageDataResponse>() {
-                        @Override
-                        public void onResponse(Call<HomePageDataResponse> call, Response<HomePageDataResponse> response) {
-                            if (response.code()==200){
-                                Toast.makeText(context, "Successfully deleted", Toast.LENGTH_SHORT).show();
-                            }
-                            else if (response.code()==503){
-                                Toast.makeText(context, "Service Unavailable", Toast.LENGTH_SHORT).show();
-                            }
-                            else {
-                                Toast.makeText(context, "fail deleted", Toast.LENGTH_SHORT).show();
-                            }
-                            ((ExpensesActivity)context).getAllExpense();
-                        }
 
-                        @Override
-                        public void onFailure(Call<HomePageDataResponse> call, Throwable t) {
-                            Toast.makeText(context, "fail deleted! try again", Toast.LENGTH_SHORT).show();
-                            Log.e("asd",t.getMessage());
-                        }
-                    });
+                apiInterface.deleteExpense("Bearer "+token,getAllExpenseDataList.get(position1).getId().toString())
+                        .enqueue(new Callback<DeleteExpenseDataResponse>() {
+                            @Override
+                            public void onResponse(Call<DeleteExpenseDataResponse> call, Response<DeleteExpenseDataResponse> response) {
+                                if (response.code()==200){
+                                    Toast.makeText(context, "Successfully deleted", Toast.LENGTH_SHORT).show();
+                                }
+                                else if (response.code()==503){
+                                    Toast.makeText(context, "Service Unavailable", Toast.LENGTH_SHORT).show();
+                                }
+                                else {
+                                    Toast.makeText(context, "fail deleted", Toast.LENGTH_SHORT).show();
+                                }
+                                ((ExpensesActivity)context).getAllExpense();
+                            }
+
+                            @Override
+                            public void onFailure(Call<DeleteExpenseDataResponse> call, Throwable t) {
+                                Toast.makeText(context, "fail deleted! try again", Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+
 
             }
         });
