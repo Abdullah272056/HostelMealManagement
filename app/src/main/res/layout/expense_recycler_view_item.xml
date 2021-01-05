@@ -76,7 +76,7 @@
                android:layout_height="wrap_content"/>
             <ImageView
                 android:layout_marginBottom="5dp"
-                android:id="@+id/deleteImageViewId"
+                android:id="@+id/deleteExpenseImageViewId"
                 android:padding="10dp"
                 android:src="@drawable/ic_baseline_delete_24"
                 android:layout_width="wrap_content"

@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -57,6 +58,13 @@ public class GetAllExpenseCustomAdapter extends RecyclerView.Adapter<GetAllExpen
         holder.typeTextView.setText(String.valueOf(getAllExpenseDataList.get(position).getType()));
         holder.costTextView.setText(String.valueOf(getAllExpenseDataList.get(position).getCost()));
 
+        holder.deleteExpenseImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
@@ -66,7 +74,7 @@ public class GetAllExpenseCustomAdapter extends RecyclerView.Adapter<GetAllExpen
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView marketerTextView,dateTextView,nameTextView,typeTextView,costTextView;
-        ImageView editImageView,deleteImageView;
+        ImageView editImageView,deleteExpenseImageView;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             marketerTextView=itemView.findViewById(R.id.marketerTextViewId);
@@ -74,6 +82,8 @@ public class GetAllExpenseCustomAdapter extends RecyclerView.Adapter<GetAllExpen
             nameTextView=itemView.findViewById(R.id.nameTextViewId);
             typeTextView=itemView.findViewById(R.id.typeTextViewId);
             costTextView=itemView.findViewById(R.id.costTextViewId);
+
+            deleteExpenseImageView=itemView.findViewById(R.id.deleteExpenseImageViewId);
 
 
         }
