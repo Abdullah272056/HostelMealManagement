@@ -223,7 +223,6 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                         costEditText.requestFocus();
                         return;
                     }
-
                     if (TextUtils.isEmpty(marketerName)){
                         selectMarketerTextView.setError("please select marketer");
                         selectMarketerTextView.requestFocus();
