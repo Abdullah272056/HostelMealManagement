@@ -3,7 +3,7 @@ package com.example.hostelmealmanagement;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class homePageDataResponse {
+public class HomePageDataResponse {
     @SerializedName("success")
     @Expose
     private Boolean success;

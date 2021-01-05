@@ -4,7 +4,7 @@ import com.example.hostelmealmanagement.expense.GetAllExpenseDataResponse;
 import com.example.hostelmealmanagement.expense.create_expense.CreateExpenseGateDataResponse;
 import com.example.hostelmealmanagement.expense.create_expense.CreateExpenseSetData;
 import com.example.hostelmealmanagement.get_all_member.GetAllMemberDataResponse;
-import com.example.hostelmealmanagement.homePageDataResponse;
+import com.example.hostelmealmanagement.HomePageDataResponse;
 import com.example.hostelmealmanagement.login.LogInGetDataResponse;
 import com.example.hostelmealmanagement.login.LogInSetDataResponse;
 import com.example.hostelmealmanagement.meal.MealRateDataResponse;
@@ -35,30 +35,29 @@ public interface ApiInterface {
     //deposit
     //get all deposit
     @GET("api/deposit/")
-    Call<homePageDataResponse> totalDepositAmount(@Header("Authorization") String authorization);
+    Call<HomePageDataResponse> totalDepositAmount(@Header("Authorization") String authorization);
 
 
 
     //Expenses
     //Total Expense Cost
     @GET("api/expenses/cost")
-    Call<homePageDataResponse> totalExpenseCost(@Header("Authorization") String authorization);
+    Call<HomePageDataResponse> totalExpenseCost(@Header("Authorization") String authorization);
     //get All Expense
     @GET("api/expenses")
     Call<GetAllExpenseDataResponse> getAllExpense(@Header("Authorization") String authorization);
     //POST Add Expenses
     @POST("api/expenses/")
     Call<CreateExpenseGateDataResponse> createExpense(@Header("Authorization") String authorization,@Body CreateExpenseSetData createExpenseSetData);
-
     //delete Expense
     @DELETE("api/expenses/{id}")
-    Call<homePageDataResponse> deleteExpense(@Header("Authorization") String authorization,@Path("id") String id);
+    Call<HomePageDataResponse> deleteExpense(@Header("Authorization") String authorization, @Path("id") String id);
 
 
     //meal
     //Total meal
     @GET("api/meal")
-    Call<homePageDataResponse> totalMealCount(@Header("Authorization") String authorization);
+    Call<HomePageDataResponse> totalMealCount(@Header("Authorization") String authorization);
 
 
     // calculation

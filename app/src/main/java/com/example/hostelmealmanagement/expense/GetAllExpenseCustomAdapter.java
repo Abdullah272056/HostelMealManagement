@@ -3,6 +3,7 @@ package com.example.hostelmealmanagement.expense;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hostelmealmanagement.ExpensesActivity;
+import com.example.hostelmealmanagement.HomePageDataResponse;
 import com.example.hostelmealmanagement.R;
 import com.example.hostelmealmanagement.retrofit.ApiInterface;
 import com.example.hostelmealmanagement.retrofit.RetrofitClient;
@@ -103,36 +106,37 @@ public class GetAllExpenseCustomAdapter extends RecyclerView.Adapter<GetAllExpen
 
 
 
-    private  void  deleteExpense(final int position){
+    private  void  deleteExpense(final int position1){
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setCancelable(false);
         builder.setMessage("Do you want to Delete?");
 
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-//                apiInterface.deleteCustomer("Bearer "+token,customerInformationList.get(position).getId().toString())
-//                        .enqueue(new Callback<CustomerDeleteResponse>() {
-//                            @Override
-//                            public void onResponse(Call<CustomerDeleteResponse> call, Response<CustomerDeleteResponse> response) {
-//                                // CustomerDeleteResponse customerDeleteResponse=response.body();
-//                                if (response.isSuccessful()){
-//                                    if (response.body().getSuccess()==true){
-//                                        Toast.makeText(context, "success delete", Toast.LENGTH_SHORT).show();
-//
-//                                    }
-//                                }
-//
-//                                ((CustomerActivity)context).getAllCustomer();
-//                            }
-//
-//                            @Override
-//                            public void onFailure(Call<CustomerDeleteResponse> call, Throwable t) {
-//                                Toast.makeText(context, "fail delete", Toast.LENGTH_SHORT).show();
-//
-//                            }
-//                        });
+            apiInterface.deleteExpense("Bearer "+token,getAllExpenseDataList.get(position1).getId())
+                    .enqueue(new Callback<HomePageDataResponse>() {
+                        @Override
+                        public void onResponse(Call<HomePageDataResponse> call, Response<HomePageDataResponse> response) {
+                            if (response.code()==200){
+                                Toast.makeText(context, "Successfully deleted", Toast.LENGTH_SHORT).show();
+                            }
+                            else if (response.code()==503){
+                                Toast.makeText(context, "Service Unavailable", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                Toast.makeText(context, "fail deleted", Toast.LENGTH_SHORT).show();
+                            }
+                            ((ExpensesActivity)context).getAllExpense();
+                        }
+
+                        @Override
+                        public void onFailure(Call<HomePageDataResponse> call, Throwable t) {
+                            Toast.makeText(context, "fail deleted! try again", Toast.LENGTH_SHORT).show();
+                            Log.e("asd",t.getMessage());
+                        }
+                    });
 
             }
         });
@@ -145,6 +149,5 @@ public class GetAllExpenseCustomAdapter extends RecyclerView.Adapter<GetAllExpen
         AlertDialog alert = builder.create();
         alert.show();
     }
-
 
 }
