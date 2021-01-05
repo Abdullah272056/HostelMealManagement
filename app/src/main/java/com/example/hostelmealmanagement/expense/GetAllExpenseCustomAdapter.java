@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hostelmealmanagement.R;
 import com.example.hostelmealmanagement.retrofit.ApiInterface;
+import com.example.hostelmealmanagement.retrofit.RetrofitClient;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,11 +37,15 @@ public class GetAllExpenseCustomAdapter extends RecyclerView.Adapter<GetAllExpen
     String token;
     List<GetAllExpenseData> getAllExpenseDataList;
 
+    ApiInterface apiInterface;
+
 
     public GetAllExpenseCustomAdapter(Context context, String token, List<GetAllExpenseData> getAllExpenseDataList) {
         this.context = context;
         this.token = token;
         this.getAllExpenseDataList = getAllExpenseDataList;
+        apiInterface = RetrofitClient.getRetrofit("http://hostel-meal-calc.herokuapp.com/").create(ApiInterface.class);
+
     }
 
     @NonNull
