@@ -111,7 +111,11 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                        }
                        else if (response.code()==401){
                            Toast.makeText(ExpensesActivity.this, "Not Authorized to access this route", Toast.LENGTH_SHORT).show();
-                       }else {
+                       }
+                       else if (response.code()==404){
+                           Toast.makeText(ExpensesActivity.this, "No expenses added so far", Toast.LENGTH_SHORT).show();
+                       }
+                       else {
                            Toast.makeText(ExpensesActivity.this, "error", Toast.LENGTH_SHORT).show();
                        }
                       }catch (Exception e){
