@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -134,6 +135,10 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
 
         saveExpenseButton=view.findViewById(R.id.saveExpenseButtonId);
         selectMarketerTextView=view.findViewById(R.id.selectMarketerTextViewId);
+            expenseNameEditText=view.findViewById(R.id.expenseNameEditTextId);
+            typeEditText=view.findViewById(R.id.typeEditTextId);
+            costEditText=view.findViewById(R.id.costEditTextId);
+
         selectMarketerTextView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -143,21 +148,12 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                 builder.setView(view);
                 alertDialog1 = builder.create();
 
-                expenseNameEditText=view.findViewById(R.id.expenseNameEditTextId);
-                typeEditText=view.findViewById(R.id.typeEditTextId);
-                costEditText=view.findViewById(R.id.costEditTextId);
+
                 memberRecyclerView=view.findViewById(R.id.memberRecyclerViewId);
                 memberProgressBar=view.findViewById(R.id.memberProgressBarId);
 
-
-
-
-
                 //Toast.makeText(ExpensesActivity.this, getAllMemberDataList.size()+"sss", Toast.LENGTH_SHORT).show();
                 alertDialog1.show();
-
-
-
 
                 apiInterface.getAllMember("Bearer "+token).enqueue(new Callback<GetAllMemberDataResponse>() {
                     @Override
@@ -196,7 +192,43 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
             saveExpenseButton.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                   
+
+                    String  expenseName=expenseNameEditText.getText().toString();
+                    String expenseType=typeEditText.getText().toString();
+                    String expenseCost=costEditText.getText().toString();
+                    String marketerName=selectMarketerTextView.getText().toString();
+                    if (TextUtils.isEmpty(expenseName)){
+                        expenseNameEditText.setError("Enter expense name");
+                        expenseNameEditText.requestFocus();
+                        return;
+                    }
+                    if (expenseName.length()<4){
+                        expenseNameEditText.setError("should be at least 4 character");
+                        expenseNameEditText.requestFocus();
+                        return;
+                    }
+                    if (TextUtils.isEmpty(expenseType)){
+                        typeEditText.setError("Enter expense type");
+                        typeEditText.requestFocus();
+                        return;
+                    }
+                    if (expenseType.length()<4){
+                        typeEditText.setError("should be at least 4 character");
+                        typeEditText.requestFocus();
+                        return;
+                    }
+                    if (TextUtils.isEmpty(expenseCost)){
+                        costEditText.setError("Enter expense cost");
+                        costEditText.requestFocus();
+                        return;
+                    }
+
+                    if (TextUtils.isEmpty(marketerName)){
+                        selectMarketerTextView.setError("please select marketer");
+                        selectMarketerTextView.requestFocus();
+                        return;
+                    }
+
 
                 }
             });
@@ -212,6 +244,6 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
             alertDialog1.dismiss();
             Toast.makeText(this, "ssssdd", Toast.LENGTH_SHORT).show();
             selectMarketerTextView.setText(String.valueOf(getAllMemberDataList.get(position).getName()));
-
+            selectMarketerTextView.setError(null);
         }
 }
