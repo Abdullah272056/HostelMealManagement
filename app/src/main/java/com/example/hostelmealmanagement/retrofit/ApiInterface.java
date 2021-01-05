@@ -1,6 +1,8 @@
 package com.example.hostelmealmanagement.retrofit;
 
 import com.example.hostelmealmanagement.expense.GetAllExpenseDataResponse;
+import com.example.hostelmealmanagement.expense.create_expense.CreateExpenseGateDataResponse;
+import com.example.hostelmealmanagement.expense.create_expense.CreateExpenseSetData;
 import com.example.hostelmealmanagement.get_all_member.GetAllMemberDataResponse;
 import com.example.hostelmealmanagement.homePageDataResponse;
 import com.example.hostelmealmanagement.login.LogInGetDataResponse;
@@ -20,19 +22,18 @@ public interface ApiInterface {
     //registration
     @POST("api/auth/register")
     Call<RegisterGetDataResponse> registrationData(@Body RegisterSetDataResponse registerSetDataResponse);
-
     //logIn
     @POST("api/auth/login")
     Call<LogInGetDataResponse> logInData(@Body LogInSetDataResponse logInSetDataResponse);
-
-    //deposit
-    @GET("api/deposit/")
-    Call<homePageDataResponse> totalDepositAmount(@Header("Authorization") String authorization);
-
     // getAll member
-    //deposit
     @GET("api/auth/member")
     Call<GetAllMemberDataResponse> getAllMember(@Header("Authorization") String authorization);
+
+
+    //deposit
+    //get all deposit
+    @GET("api/deposit/")
+    Call<homePageDataResponse> totalDepositAmount(@Header("Authorization") String authorization);
 
 
 
@@ -40,10 +41,12 @@ public interface ApiInterface {
     //Total Expense Cost
     @GET("api/expenses/cost")
     Call<homePageDataResponse> totalExpenseCost(@Header("Authorization") String authorization);
-
     //get All Expense
     @GET("api/expenses")
     Call<GetAllExpenseDataResponse> getAllExpense(@Header("Authorization") String authorization);
+    //POST Add Expenses
+    @POST("api/expenses/")
+    Call<CreateExpenseGateDataResponse> createExpense(@Header("Authorization") String authorization,@Body CreateExpenseSetData createExpenseSetData);
 
 
     //meal
