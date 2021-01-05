@@ -133,24 +133,24 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
         builder.setView(view);
         final AlertDialog alertDialog   = builder.create();
 
-        saveExpenseButton=view.findViewById(R.id.saveExpenseButtonId);
-        selectMarketerTextView=view.findViewById(R.id.selectMarketerTextViewId);
-            expenseNameEditText=view.findViewById(R.id.expenseNameEditTextId);
-            typeEditText=view.findViewById(R.id.typeEditTextId);
-            costEditText=view.findViewById(R.id.costEditTextId);
+            saveExpenseButton       =view.findViewById(R.id.saveExpenseButtonId);
+            selectMarketerTextView  =view.findViewById(R.id.selectMarketerTextViewId);
+            expenseNameEditText     =view.findViewById(R.id.expenseNameEditTextId);
+            typeEditText            =view.findViewById(R.id.typeEditTextId);
+            costEditText            =view.findViewById(R.id.costEditTextId);
 
         selectMarketerTextView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder     =new AlertDialog.Builder(ExpensesActivity.this);
                 LayoutInflater layoutInflater   =LayoutInflater.from(ExpensesActivity.this);
-                final View view                       =layoutInflater.inflate(R.layout.member_recycler_view,null);
+                final View view                 =layoutInflater.inflate(R.layout.member_recycler_view,null);
                 builder.setView(view);
-                alertDialog1 = builder.create();
+                alertDialog1    = builder.create();
 
 
-                memberRecyclerView=view.findViewById(R.id.memberRecyclerViewId);
-                memberProgressBar=view.findViewById(R.id.memberProgressBarId);
+                memberRecyclerView  =view.findViewById(R.id.memberRecyclerViewId);
+                memberProgressBar   =view.findViewById(R.id.memberProgressBarId);
 
                 //Toast.makeText(ExpensesActivity.this, getAllMemberDataList.size()+"sss", Toast.LENGTH_SHORT).show();
                 alertDialog1.show();
@@ -193,10 +193,11 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                 @Override
                 public void onClick(View v) {
 
-                    String  expenseName=expenseNameEditText.getText().toString();
-                    String expenseType=typeEditText.getText().toString();
-                    String expenseCost=costEditText.getText().toString();
-                    String marketerName=selectMarketerTextView.getText().toString();
+                    String expenseName  =expenseNameEditText.getText().toString();
+                    String expenseType  =typeEditText.getText().toString();
+                    String expenseCost  =costEditText.getText().toString();
+                    String marketerName =selectMarketerTextView.getText().toString();
+
                     if (TextUtils.isEmpty(expenseName)){
                         expenseNameEditText.setError("Enter expense name");
                         expenseNameEditText.requestFocus();
@@ -228,6 +229,10 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                         selectMarketerTextView.requestFocus();
                         return;
                     }
+
+
+
+
 
 
                 }
