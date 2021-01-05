@@ -45,7 +45,8 @@ FloatingActionButton addExpenseButton;
 TextView selectMarketerTextView;
 Button saveExpenseButton;
 EditText expenseNameEditText,typeEditText,costEditText;
-
+ProgressBar createExpenseProgressBar;
+String marketerId=null;
 
 RecyclerView expenseRecyclerView;
 RecyclerView memberRecyclerView;
@@ -54,7 +55,7 @@ ProgressBar expenseProgressBar;
 String token;
 List<GetAllExpenseData> getAllExpenseDataList;
 List<GetAllMemberData> getAllMemberDataList;
-String marketerId=null;
+
 
 
 GetAllExpenseCustomAdapter getAllExpenseCustomAdapter;
@@ -136,11 +137,12 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
         builder.setView(view);
         final AlertDialog alertDialog   = builder.create();
 
-            saveExpenseButton       =view.findViewById(R.id.saveExpenseButtonId);
-            selectMarketerTextView  =view.findViewById(R.id.selectMarketerTextViewId);
-            expenseNameEditText     =view.findViewById(R.id.expenseNameEditTextId);
-            typeEditText            =view.findViewById(R.id.typeEditTextId);
-            costEditText            =view.findViewById(R.id.costEditTextId);
+            saveExpenseButton           =view.findViewById(R.id.saveExpenseButtonId);
+            selectMarketerTextView      =view.findViewById(R.id.selectMarketerTextViewId);
+            expenseNameEditText         =view.findViewById(R.id.expenseNameEditTextId);
+            typeEditText                =view.findViewById(R.id.typeEditTextId);
+            costEditText                =view.findViewById(R.id.costEditTextId);
+            createExpenseProgressBar    =view.findViewById(R.id.createExpenseProgressBarId);
 
         selectMarketerTextView.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -232,7 +234,7 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                         return;
                     }
                     if (marketerId.length()>0 && marketerId!=null){
-                        
+                        createExpenseProgressBar.setVisibility(View.VISIBLE);
                         CreateExpenseSetData createExpenseSetData= new CreateExpenseSetData(marketerId,Integer.parseInt(expenseCost),expenseType,expenseName);
                         apiInterface.createExpense("Bearer "+token,createExpenseSetData).enqueue(new Callback<CreateExpenseGateDataResponse>() {
                             @Override
@@ -247,11 +249,13 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                                 }else {
                                     Toast.makeText(ExpensesActivity.this, "failed !try again", Toast.LENGTH_SHORT).show();
                                 }
+                                createExpenseProgressBar.setVisibility(View.INVISIBLE);
                             }
 
                             @Override
                             public void onFailure(Call<CreateExpenseGateDataResponse> call, Throwable t) {
                                 Toast.makeText(ExpensesActivity.this, "failed !try again", Toast.LENGTH_SHORT).show();
+                                createExpenseProgressBar.setVisibility(View.INVISIBLE);
                             }
                         });
                     }else {
