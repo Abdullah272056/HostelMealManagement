@@ -13,9 +13,11 @@ import com.example.hostelmealmanagement.register.RegisterSetDataResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface ApiInterface {
     //Auth
@@ -47,6 +49,10 @@ public interface ApiInterface {
     //POST Add Expenses
     @POST("api/expenses/")
     Call<CreateExpenseGateDataResponse> createExpense(@Header("Authorization") String authorization,@Body CreateExpenseSetData createExpenseSetData);
+
+    //delete Expense
+    @DELETE("api/expenses/{id}")
+    Call<homePageDataResponse> deleteExpense(@Header("Authorization") String authorization,@Path("id") String id);
 
 
     //meal
