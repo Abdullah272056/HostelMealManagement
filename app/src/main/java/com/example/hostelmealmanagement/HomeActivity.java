@@ -64,6 +64,12 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        depositButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
     }
 
     public void totalDepositAmount(){
