@@ -15,13 +15,13 @@ import java.util.List;
 public class AllCalculationCustomAdapter extends RecyclerView.Adapter<AllCalculationCustomAdapter.MyViewHolder> {
     Context context;
     String token;
-    List<GetAllMemberData> getAllMemberDataList;
+    List<GetAllCalculationData> getAllCalculationDataList;
     MemberListCustomAdapter.OnContactClickListener onContactClickListener;
 
-    public AllCalculationCustomAdapter(Context context, String token, List<GetAllMemberData> getAllMemberDataList) {
+    public AllCalculationCustomAdapter(Context context, String token, List<GetAllCalculationData> getAllCalculationDataList) {
         this.context = context;
         this.token = token;
-        this.getAllMemberDataList = getAllMemberDataList;
+        this.getAllCalculationDataList = getAllCalculationDataList;
     }
 
     @NonNull
