@@ -3,24 +3,18 @@ package com.example.hostelmealmanagement.meal;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class AddMealGetBoarderData {
-    @SerializedName("dateAdded")
-    @Expose
-    private String dateAdded;
     @SerializedName("_id")
     @Expose
     private String id;
-    @SerializedName("mealCount")
+    @SerializedName("name")
     @Expose
-    private Integer mealCount;
-
-    public String getDateAdded() {
-        return dateAdded;
-    }
-
-    public void setDateAdded(String dateAdded) {
-        this.dateAdded = dateAdded;
-    }
+    private String name;
+    @SerializedName("meal")
+    @Expose
+    private List<AddMealGetMealData> addMealGetMealDataList = null;
 
     public String getId() {
         return id;
@@ -30,11 +24,19 @@ public class AddMealGetBoarderData {
         this.id = id;
     }
 
-    public Integer getMealCount() {
-        return mealCount;
+    public String getName() {
+        return name;
     }
 
-    public void setMealCount(Integer mealCount) {
-        this.mealCount = mealCount;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<AddMealGetMealData> getAddMealGetMealDataList() {
+        return addMealGetMealDataList;
+    }
+
+    public void setAddMealGetMealDataList(List<AddMealGetMealData> addMealGetMealDataList) {
+        this.addMealGetMealDataList = addMealGetMealDataList;
     }
 }
