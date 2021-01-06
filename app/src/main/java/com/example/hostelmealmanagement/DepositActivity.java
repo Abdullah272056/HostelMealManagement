@@ -19,6 +19,10 @@ FloatingActionButton addDepositFloatingButton;
 ApiInterface apiInterface;
 String token;
 
+// alert box
+    EditText depositAmountEditText;
+    TextView selectBorderTextView;
+    Button saveDepositButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +49,10 @@ String token;
         View view                       =layoutInflater.inflate(R.layout.add_deposit,null);
         builder.setView(view);
         final AlertDialog alertDialog   = builder.create();
-
-
-
+        
+        depositAmountEditText=view.findViewById(R.id.depositAmountEditTextId);
+        selectBorderTextView=view.findViewById(R.id.selectBorderTextViewId);
+        saveDepositButton=view.findViewById(R.id.saveDepositButtonId);
 
 
 
