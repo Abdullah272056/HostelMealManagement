@@ -68,7 +68,7 @@ public interface ApiInterface {
     Call<MealRateDataResponse> mealRate(@Header("Authorization") String authorization);
     //GET Final Calculation
     @GET("api/calculation/")
-    Call<GetAllCalculationDataResponse> finalCalculation(@Header("Authorization") String authorization);
+    Call<GetAllCalculationDataResponse> getFinalCalculation(@Header("Authorization") String authorization);
 
 
 }
