@@ -24,7 +24,7 @@ public class HomeActivity extends AppCompatActivity {
 
     ApiInterface apiInterface;
 
-    Button expenseButton,calculationButton,depositButton;
+    Button expenseButton,calculationButton,depositButton,mealButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +42,7 @@ public class HomeActivity extends AppCompatActivity {
         expenseButton=findViewById(R.id.expenseButtonId);
         calculationButton=findViewById(R.id.calculationButtonId);
         depositButton=findViewById(R.id.depositButtonId);
+        mealButton=findViewById(R.id.mealButtonId);
         // call method
         totalDepositAmount();
         totalExpenseAmount();
@@ -70,6 +71,12 @@ public class HomeActivity extends AppCompatActivity {
                 Intent intent =new Intent(HomeActivity.this,DepositActivity.class);
                 intent.putExtra("token",token);
                 startActivity(intent);
+            }
+        });
+        mealButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
             }
         });
     }
