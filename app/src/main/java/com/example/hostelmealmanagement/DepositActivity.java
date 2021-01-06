@@ -47,6 +47,7 @@ String token;
     MemberListCustomAdapter memberListCustomAdapter;
     MemberListCustomAdapter.OnContactClickListener onContactClickListener;
     String borderId=null;
+    ProgressBar addDepositProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +78,7 @@ String token;
         depositAmountEditText=view.findViewById(R.id.depositAmountEditTextId);
         selectBorderTextView=view.findViewById(R.id.selectBorderTextViewId);
         saveDepositButton=view.findViewById(R.id.saveDepositButtonId);
+        addDepositProgressBar=view.findViewById(R.id.addDepositProgressBarId);
 
         selectBorderTextView.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -144,7 +146,9 @@ String token;
                     selectBorderTextView.requestFocus();
                     return;
                 }
+
                 if (borderId!=null){
+                    addDepositProgressBar.setVisibility(View.VISIBLE);
                     AddDepositSetData addDepositSetData=new AddDepositSetData(Integer.parseInt(depositAmount),borderId);
 
                     apiInterface.addDepositAmount("Bearer "+token,addDepositSetData).enqueue(new Callback<AddDepositGetDataResponse>() {
@@ -158,11 +162,13 @@ String token;
                             }else {
                                 Toast.makeText(DepositActivity.this, "failed !try again", Toast.LENGTH_SHORT).show();
                             }
+                            addDepositProgressBar.setVisibility(View.INVISIBLE);
                         }
 
                         @Override
                         public void onFailure(Call<AddDepositGetDataResponse> call, Throwable t) {
                             Toast.makeText(DepositActivity.this, "failed !try again", Toast.LENGTH_SHORT).show();
+                            addDepositProgressBar.setVisibility(View.INVISIBLE);
 
                         }
                     });
@@ -180,7 +186,7 @@ String token;
     @Override
     public void onContactClick(int position) {
         alertDialog1.dismiss();
-        Toast.makeText(this, "ssssdd", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "ssssdd", Toast.LENGTH_SHORT).show();
         borderId=String.valueOf(getAllMemberDataList.get(position).getId());
         selectBorderTextView.setText(String.valueOf(getAllMemberDataList.get(position).getName()));
         selectBorderTextView.setError(null);
