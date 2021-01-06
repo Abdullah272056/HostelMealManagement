@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -132,7 +133,18 @@ public class MealActivity extends AppCompatActivity implements MemberListCustomA
         saveMealButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                String mealNumber=mealNumberEditText.getText().toString();
+                String selectBorder=selectBorderTextView.getText().toString();
+                if (TextUtils.isEmpty(mealNumber)){
+                    mealNumberEditText.setError("Enter meal number");
+                    mealNumberEditText.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(selectBorder)){
+                    selectBorderTextView.setError("please select member");
+                    selectBorderTextView.requestFocus();
+                    return;
+                }
             }
         });
 
