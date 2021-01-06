@@ -23,7 +23,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CalculationActivity extends AppCompatActivity {
+public class CalculationActivity extends AppCompatActivity{
+
     String token;
     ApiInterface apiInterface;
     List<GetAllCalculationData> getAllCalculationDataList;
