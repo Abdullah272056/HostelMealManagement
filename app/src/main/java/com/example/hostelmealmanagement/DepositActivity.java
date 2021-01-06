@@ -44,6 +44,7 @@ String token;
     List<GetAllMemberData> getAllMemberDataList;
     MemberListCustomAdapter memberListCustomAdapter;
     MemberListCustomAdapter.OnContactClickListener onContactClickListener;
+    String borderId=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -153,6 +154,10 @@ String token;
 
     @Override
     public void onContactClick(int position) {
-
+        alertDialog1.dismiss();
+        Toast.makeText(this, "ssssdd", Toast.LENGTH_SHORT).show();
+        borderId=String.valueOf(getAllMemberDataList.get(position).getId());
+        selectBorderTextView.setText(String.valueOf(getAllMemberDataList.get(position).getName()));
+        selectBorderTextView.setError(null);
     }
 }
