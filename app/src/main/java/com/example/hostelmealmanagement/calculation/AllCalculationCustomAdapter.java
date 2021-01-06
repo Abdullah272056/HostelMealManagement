@@ -36,12 +36,12 @@ public class AllCalculationCustomAdapter extends RecyclerView.Adapter<AllCalcula
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.memberNameTextView.setText(getAllCalculationDataList.get(position).getName());
-        holder.totalMealTextView.setText(String.valueOf(getAllCalculationDataList.get(position).getTotalMeal()));
-        holder.mealRateTextView.setText(String.valueOf(getAllCalculationDataList.get(position).getMealRate()));
-        holder.totalCostTextView.setText(String.valueOf(getAllCalculationDataList.get(position).getTotalCost()));
-        holder.depositAmountTextView.setText(String.valueOf(getAllCalculationDataList.get(position).getDepositAmount()));
-        holder.dueTextView.setText(String.valueOf(getAllCalculationDataList.get(position).getDueOrGetReturn()));
+        holder.memberNameTextView.setText("Name: "+getAllCalculationDataList.get(position).getName());
+        holder.totalMealTextView.setText("Total meal: "+String.valueOf(getAllCalculationDataList.get(position).getTotalMeal()));
+        holder.mealRateTextView.setText("Meal rate: "+String.valueOf(getAllCalculationDataList.get(position).getMealRate()));
+        holder.totalCostTextView.setText("Total cost: "+String.valueOf(getAllCalculationDataList.get(position).getTotalCost()));
+        holder.depositAmountTextView.setText("Deposit: "+String.valueOf(getAllCalculationDataList.get(position).getDepositAmount()));
+        holder.dueTextView.setText("Due: "+String.valueOf(getAllCalculationDataList.get(position).getDueOrGetReturn()));
     }
 
     @Override
