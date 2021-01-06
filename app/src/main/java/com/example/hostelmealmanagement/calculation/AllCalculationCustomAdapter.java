@@ -1,12 +1,28 @@
 package com.example.hostelmealmanagement.calculation;
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hostelmealmanagement.get_all_member.GetAllMemberData;
+import com.example.hostelmealmanagement.get_all_member.MemberListCustomAdapter;
+
+import java.util.List;
+
 public class AllCalculationCustomAdapter extends RecyclerView.Adapter<AllCalculationCustomAdapter.MyViewHolder> {
+    Context context;
+    String token;
+    List<GetAllMemberData> getAllMemberDataList;
+    MemberListCustomAdapter.OnContactClickListener onContactClickListener;
+
+    public AllCalculationCustomAdapter(Context context, String token, List<GetAllMemberData> getAllMemberDataList) {
+        this.context = context;
+        this.token = token;
+        this.getAllMemberDataList = getAllMemberDataList;
+    }
 
     @NonNull
     @Override
