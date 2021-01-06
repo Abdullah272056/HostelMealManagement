@@ -17,7 +17,7 @@ public class MealActivity extends AppCompatActivity {
         addMealFloatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
     }
