@@ -15,6 +15,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hostelmealmanagement.deposit.AddDepositGetDataResponse;
+import com.example.hostelmealmanagement.deposit.AddDepositSetData;
 import com.example.hostelmealmanagement.get_all_member.GetAllMemberData;
 import com.example.hostelmealmanagement.get_all_member.GetAllMemberDataResponse;
 import com.example.hostelmealmanagement.get_all_member.MemberListCustomAdapter;
@@ -85,7 +87,6 @@ String token;
                 builder.setView(view);
                 alertDialog1    = builder.create();
 
-
                 memberRecyclerView  =view.findViewById(R.id.memberRecyclerViewId);
                 memberProgressBar   =view.findViewById(R.id.memberProgressBarId);
 
@@ -143,6 +144,24 @@ String token;
                     selectBorderTextView.requestFocus();
                     return;
                 }
+                if (borderId!=null){
+                    AddDepositSetData addDepositSetData=new AddDepositSetData(Integer.parseInt(depositAmount),borderId);
+
+
+                    apiInterface.addDepositAmount("Bearer "+token,addDepositSetData).enqueue(new Callback<AddDepositGetDataResponse>() {
+                        @Override
+                        public void onResponse(Call<AddDepositGetDataResponse> call, Response<AddDepositGetDataResponse> response) {
+                            Toast.makeText(DepositActivity.this, "sss", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onFailure(Call<AddDepositGetDataResponse> call, Throwable t) {
+                            Toast.makeText(DepositActivity.this, "fff", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+                }
+
             }
         });
 
