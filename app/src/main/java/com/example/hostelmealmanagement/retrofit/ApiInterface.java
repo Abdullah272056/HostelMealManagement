@@ -11,6 +11,8 @@ import com.example.hostelmealmanagement.get_all_member.GetAllMemberDataResponse;
 import com.example.hostelmealmanagement.HomePageDataResponse;
 import com.example.hostelmealmanagement.login.LogInGetDataResponse;
 import com.example.hostelmealmanagement.login.LogInSetDataResponse;
+import com.example.hostelmealmanagement.meal.AddMealGetDataResponse;
+import com.example.hostelmealmanagement.meal.AddMealSetData;
 import com.example.hostelmealmanagement.meal.MealRateDataResponse;
 import com.example.hostelmealmanagement.register.RegisterGetDataResponse;
 import com.example.hostelmealmanagement.register.RegisterSetDataResponse;
@@ -65,6 +67,12 @@ public interface ApiInterface {
     //Total meal
     @GET("api/meal")
     Call<HomePageDataResponse> totalMealCount(@Header("Authorization") String authorization);
+
+    // add meal
+    @POST("api/meal")
+    Call<AddMealGetDataResponse> addMeal(@Header("Authorization") String authorization, @Body AddMealSetData addMealSetData);
+
+
 
 
     // calculation
