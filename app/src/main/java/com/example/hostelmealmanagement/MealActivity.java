@@ -82,7 +82,7 @@ public class MealActivity extends AppCompatActivity implements MemberListCustomA
         mealNumberEditText=view.findViewById(R.id.mealNumberEditTextId);
         selectBorderTextView=view.findViewById(R.id.selectBorderTextViewId);
         saveMealButton=view.findViewById(R.id.saveMealButtonId);
-       
+        addMealProgressBar=view.findViewById(R.id.addMealProgressBarId);
 
         selectBorderTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,7 +152,7 @@ public class MealActivity extends AppCompatActivity implements MemberListCustomA
                 }
 
                 if (borderId!=null){
-
+                    addMealProgressBar.setVisibility(View.VISIBLE);
                     //addDepositProgressBar.setVisibility(View.VISIBLE);
                     AddMealSetData addMealSetData=new AddMealSetData(borderId,Integer.parseInt(mealNumber));
 
@@ -161,7 +161,7 @@ public class MealActivity extends AppCompatActivity implements MemberListCustomA
                         public void onResponse(Call<AddMealGetDataResponse> call, Response<AddMealGetDataResponse> response) {
                             if (response.code()==200){
                                 Toast.makeText(MealActivity.this, "add success", Toast.LENGTH_SHORT).show();
-
+                                    alertDialog.dismiss();
                             }else if (response.code()==404){
                                 Toast.makeText(MealActivity.this, "User not found", Toast.LENGTH_SHORT).show();
 
@@ -169,13 +169,14 @@ public class MealActivity extends AppCompatActivity implements MemberListCustomA
                                 Toast.makeText(MealActivity.this, "some error ! try again", Toast.LENGTH_SHORT).show();
 
                             }
-
+                            addMealProgressBar.setVisibility(View.INVISIBLE);
 
                         }
 
                         @Override
                         public void onFailure(Call<AddMealGetDataResponse> call, Throwable t) {
                             Toast.makeText(MealActivity.this, "failed ! try again", Toast.LENGTH_SHORT).show();
+                            addMealProgressBar.setVisibility(View.INVISIBLE);
 
                         }
                     });
