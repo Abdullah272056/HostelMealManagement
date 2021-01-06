@@ -16,7 +16,7 @@ public class MealActivity extends AppCompatActivity {
         setContentView(R.layout.activity_meal);
         //receive user token
         token= getIntent().getStringExtra("token");
-        
+
         addMealFloatingButton=findViewById(R.id.addMealFloatingButtonId);
         addMealFloatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
