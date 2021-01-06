@@ -1,5 +1,6 @@
 package com.example.hostelmealmanagement.retrofit;
 
+import com.example.hostelmealmanagement.calculation.GetAllCalculationDataResponse;
 import com.example.hostelmealmanagement.expense.DeleteExpenseDataResponse;
 import com.example.hostelmealmanagement.expense.GetAllExpenseDataResponse;
 import com.example.hostelmealmanagement.expense.create_expense.CreateExpenseGateDataResponse;
@@ -65,6 +66,9 @@ public interface ApiInterface {
     //get meal rate
     @GET("api/calculation/meal-rate")
     Call<MealRateDataResponse> mealRate(@Header("Authorization") String authorization);
+    //GET Final Calculation
+    @GET("api/calculation/")
+    Call<GetAllCalculationDataResponse> finalCalculation(@Header("Authorization") String authorization);
 
 
 }
