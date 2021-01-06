@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DepositActivity"></activity>
+        <activity android:name=".MealActivity"></activity>
+        <activity android:name=".DepositActivity" />
         <activity android:name=".CalculationActivity" />
         <activity
             android:name=".ExpensesActivity"
