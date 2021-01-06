@@ -24,7 +24,7 @@ public class HomeActivity extends AppCompatActivity {
 
     ApiInterface apiInterface;
 
-    Button expenseButton;
+    Button expenseButton,calculationButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +40,7 @@ public class HomeActivity extends AppCompatActivity {
         totalMealTextView=findViewById(R.id.totalMealTextViewId);
         mealRateTextView=findViewById(R.id.mealRateTextViewId);
         expenseButton=findViewById(R.id.expenseButtonId);
+        calculationButton=findViewById(R.id.calculationButtonId);
         // call method
         totalDepositAmount();
         totalExpenseAmount();
