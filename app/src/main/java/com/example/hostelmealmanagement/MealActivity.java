@@ -49,7 +49,7 @@ public class MealActivity extends AppCompatActivity implements MemberListCustomA
     MemberListCustomAdapter memberListCustomAdapter;
     MemberListCustomAdapter.OnContactClickListener onContactClickListener;
     String borderId=null;
-    ProgressBar addDepositProgressBar;
+    ProgressBar addMealProgressBar;
 
 
     @Override
@@ -82,6 +82,7 @@ public class MealActivity extends AppCompatActivity implements MemberListCustomA
         mealNumberEditText=view.findViewById(R.id.mealNumberEditTextId);
         selectBorderTextView=view.findViewById(R.id.selectBorderTextViewId);
         saveMealButton=view.findViewById(R.id.saveMealButtonId);
+       
 
         selectBorderTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,6 +152,7 @@ public class MealActivity extends AppCompatActivity implements MemberListCustomA
                 }
 
                 if (borderId!=null){
+
                     //addDepositProgressBar.setVisibility(View.VISIBLE);
                     AddMealSetData addMealSetData=new AddMealSetData(borderId,Integer.parseInt(mealNumber));
 
@@ -167,6 +169,8 @@ public class MealActivity extends AppCompatActivity implements MemberListCustomA
                                 Toast.makeText(MealActivity.this, "some error ! try again", Toast.LENGTH_SHORT).show();
 
                             }
+
+
                         }
 
                         @Override
