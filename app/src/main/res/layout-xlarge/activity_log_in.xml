@@ -6,8 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sss"
-    android:padding="10dp"
+
+    android:paddingRight="15dp"
+    android:paddingLeft="15dp"
+    android:paddingBottom="10dp"
     tools:context=".LogInActivity"
+    android:paddingTop="30dp"
     android:orientation="horizontal">
     <ScrollView
         android:layout_width="match_parent"
@@ -26,53 +30,54 @@
         android:layout_marginTop="10dp"
         android:background="#DAD3D3"
         android:hint="enter your email"
-        android:textSize="20sp"
+        android:textSize="40sp"
         android:padding="10dp"
         android:id="@+id/signInEmailEditTextId"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="100dp"/>
 
 
     <EditText
         android:imeOptions="actionDone"
         android:drawableRight="@drawable/ic_baseline_lock_24"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="60dp"
         android:background="#DAD3D3"
         android:inputType="textPassword"
         android:id="@+id/signInPasswordEditTextId"
         android:hint="enter your password"
-        android:textSize="20sp"
+        android:textSize="40sp"
         android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="100dp"/>
     <CheckBox
+        android:textSize="30sp"
         android:id="@+id/rememberCheckBoxId"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:buttonTint="#ffffff"
         android:text="Remember me ?"
         android:textColor="#ffffff"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
         android:layout_gravity="end"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="50dp"/>
     <Button
         android:id="@+id/signInButtonId"
         android:text="Sign In"
-        android:textSize="25sp"
-        android:layout_marginTop="50dp"
+        android:textSize="50sp"
+        android:layout_marginTop="100dp"
         android:padding="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="100dp"/>
     <TextView
         android:text="Are you not registered? Sign Up"
         android:textColor="#FFFEFE"
         android:layout_marginRight="30dp"
         android:layout_gravity="right"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:id="@+id/signUpTextViewId"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -81,9 +86,9 @@
         android:text="Forgot your password?"
         android:textColor="#FF5722"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:id="@+id/resetPasswordTextViewId"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -93,8 +98,8 @@
     <ProgressBar
         android:foregroundGravity="center"
         android:id="@+id/logInProgressBarId"
-        android:layout_width="59dp"
-        android:layout_height="67dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
