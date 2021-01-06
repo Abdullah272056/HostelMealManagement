@@ -20,6 +20,8 @@ import com.example.hostelmealmanagement.deposit.AddDepositSetData;
 import com.example.hostelmealmanagement.get_all_member.GetAllMemberData;
 import com.example.hostelmealmanagement.get_all_member.GetAllMemberDataResponse;
 import com.example.hostelmealmanagement.get_all_member.MemberListCustomAdapter;
+import com.example.hostelmealmanagement.meal.AddMealGetDataResponse;
+import com.example.hostelmealmanagement.meal.AddMealSetData;
 import com.example.hostelmealmanagement.retrofit.ApiInterface;
 import com.example.hostelmealmanagement.retrofit.RetrofitClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -150,9 +152,20 @@ public class MealActivity extends AppCompatActivity implements MemberListCustomA
 
                 if (borderId!=null){
                     //addDepositProgressBar.setVisibility(View.VISIBLE);
-                    AddDepositSetData addDepositSetData=new AddDepositSetData(Integer.parseInt(mealNumber),borderId);
+                    AddMealSetData addMealSetData=new AddMealSetData(borderId,Integer.parseInt(mealNumber));
 
+                    apiInterface.addMeal("Bearer "+token,addMealSetData).enqueue(new Callback<AddMealGetDataResponse>() {
+                        @Override
+                        public void onResponse(Call<AddMealGetDataResponse> call, Response<AddMealGetDataResponse> response) {
+                            Toast.makeText(MealActivity.this, "sss", Toast.LENGTH_SHORT).show();
+                        }
 
+                        @Override
+                        public void onFailure(Call<AddMealGetDataResponse> call, Throwable t) {
+                            Toast.makeText(MealActivity.this, "fff", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
 
 
                 }

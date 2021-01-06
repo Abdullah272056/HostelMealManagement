@@ -27,4 +27,8 @@ public class AddMealSetData {
         this.mealCount = mealCount;
     }
 
+    public AddMealSetData(String userId, Integer mealCount) {
+        this.userId = userId;
+        this.mealCount = mealCount;
+    }
 }
