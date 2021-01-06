@@ -36,7 +36,7 @@
     <EditText
         android:imeOptions="actionDone"
         android:drawableRight="@drawable/ic_baseline_lock_24"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="35dp"
         android:background="#DAD3D3"
         android:inputType="textPassword"
         android:id="@+id/signInPasswordEditTextId"
@@ -52,7 +52,7 @@
         android:buttonTint="#ffffff"
         android:text="Remember me ?"
         android:textColor="#ffffff"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginRight="20dp"
         android:layout_gravity="end"
         android:layout_marginLeft="20dp"
