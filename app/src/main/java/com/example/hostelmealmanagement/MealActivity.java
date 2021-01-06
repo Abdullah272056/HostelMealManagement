@@ -15,6 +15,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hostelmealmanagement.deposit.AddDepositGetDataResponse;
+import com.example.hostelmealmanagement.deposit.AddDepositSetData;
 import com.example.hostelmealmanagement.get_all_member.GetAllMemberData;
 import com.example.hostelmealmanagement.get_all_member.GetAllMemberDataResponse;
 import com.example.hostelmealmanagement.get_all_member.MemberListCustomAdapter;
@@ -145,6 +147,18 @@ public class MealActivity extends AppCompatActivity implements MemberListCustomA
                     selectBorderTextView.requestFocus();
                     return;
                 }
+
+                if (borderId!=null){
+                    //addDepositProgressBar.setVisibility(View.VISIBLE);
+                    AddDepositSetData addDepositSetData=new AddDepositSetData(Integer.parseInt(mealNumber),borderId);
+
+
+
+
+                }
+
+
+
             }
         });
 
