@@ -147,16 +147,22 @@ String token;
                 if (borderId!=null){
                     AddDepositSetData addDepositSetData=new AddDepositSetData(Integer.parseInt(depositAmount),borderId);
 
-
                     apiInterface.addDepositAmount("Bearer "+token,addDepositSetData).enqueue(new Callback<AddDepositGetDataResponse>() {
                         @Override
                         public void onResponse(Call<AddDepositGetDataResponse> call, Response<AddDepositGetDataResponse> response) {
-                            Toast.makeText(DepositActivity.this, "sss", Toast.LENGTH_SHORT).show();
+                            if (response.code()==200){
+                                Toast.makeText(DepositActivity.this, "Add Success", Toast.LENGTH_SHORT).show();
+                                alertDialog.dismiss();
+                            }else if(response.code()==400){
+                                Toast.makeText(DepositActivity.this, "User not valid", Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(DepositActivity.this, "failed !try again", Toast.LENGTH_SHORT).show();
+                            }
                         }
 
                         @Override
                         public void onFailure(Call<AddDepositGetDataResponse> call, Throwable t) {
-                            Toast.makeText(DepositActivity.this, "fff", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DepositActivity.this, "failed !try again", Toast.LENGTH_SHORT).show();
 
                         }
                     });
