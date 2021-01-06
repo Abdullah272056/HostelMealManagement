@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -49,11 +50,29 @@ String token;
         View view                       =layoutInflater.inflate(R.layout.add_deposit,null);
         builder.setView(view);
         final AlertDialog alertDialog   = builder.create();
-        
+
         depositAmountEditText=view.findViewById(R.id.depositAmountEditTextId);
         selectBorderTextView=view.findViewById(R.id.selectBorderTextViewId);
         saveDepositButton=view.findViewById(R.id.saveDepositButtonId);
 
+
+        saveDepositButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String depositAmount=depositAmountEditText.getText().toString();
+                String selectBorder=selectBorderTextView.getText().toString();
+                if (TextUtils.isEmpty(depositAmount)){
+                    depositAmountEditText.setError("Enter deposit amount");
+                    depositAmountEditText.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(selectBorder)){
+                    selectBorderTextView.setError("please select member");
+                    selectBorderTextView.requestFocus();
+                    return;
+                }
+            }
+        });
 
 
         alertDialog.show();
