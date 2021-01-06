@@ -6,12 +6,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MealActivity extends AppCompatActivity {
     FloatingActionButton addMealFloatingButton;
     String token;
+
+    // alertBox
+    EditText mealNumberEditText;
+    TextView selectBorderTextView;
+    Button saveMealButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +44,9 @@ public class MealActivity extends AppCompatActivity {
         builder.setView(view);
         final AlertDialog alertDialog   = builder.create();
 
-
+        mealNumberEditText=view.findViewById(R.id.mealNumberEditTextId);
+        selectBorderTextView=view.findViewById(R.id.selectBorderTextViewId);
+        saveMealButton=view.findViewById(R.id.saveMealButtonId);
 
 
 
