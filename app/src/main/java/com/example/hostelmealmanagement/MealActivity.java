@@ -134,7 +134,11 @@ public class MealActivity extends AppCompatActivity implements MemberListCustomA
 
     @Override
     public void onContactClick(int position) {
-
+        alertDialog1.dismiss();
+        //Toast.makeText(this, "ssssdd", Toast.LENGTH_SHORT).show();
+        borderId=String.valueOf(getAllMemberDataList.get(position).getId());
+        selectBorderTextView.setText(String.valueOf(getAllMemberDataList.get(position).getName()));
+        selectBorderTextView.setError(null);
 
     }
 }
