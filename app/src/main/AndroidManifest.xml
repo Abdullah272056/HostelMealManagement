@@ -13,16 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ExpensesActivity"
-            android:screenOrientation="portrait"
-            ></activity>
-        <activity android:name=".HomeActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".LogInActivity"
-            android:screenOrientation="portrait"
-            >
+        <activity android:name=".CalculationActivity"></activity>
+        <activity
+            android:name=".ExpensesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LogInActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
