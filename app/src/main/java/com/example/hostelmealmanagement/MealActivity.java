@@ -157,12 +157,21 @@ public class MealActivity extends AppCompatActivity implements MemberListCustomA
                     apiInterface.addMeal("Bearer "+token,addMealSetData).enqueue(new Callback<AddMealGetDataResponse>() {
                         @Override
                         public void onResponse(Call<AddMealGetDataResponse> call, Response<AddMealGetDataResponse> response) {
-                            Toast.makeText(MealActivity.this, "sss", Toast.LENGTH_SHORT).show();
+                            if (response.code()==200){
+                                Toast.makeText(MealActivity.this, "add success", Toast.LENGTH_SHORT).show();
+
+                            }else if (response.code()==404){
+                                Toast.makeText(MealActivity.this, "User not found", Toast.LENGTH_SHORT).show();
+
+                            }else {
+                                Toast.makeText(MealActivity.this, "some error ! try again", Toast.LENGTH_SHORT).show();
+
+                            }
                         }
 
                         @Override
                         public void onFailure(Call<AddMealGetDataResponse> call, Throwable t) {
-                            Toast.makeText(MealActivity.this, "fff", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MealActivity.this, "failed ! try again", Toast.LENGTH_SHORT).show();
 
                         }
                     });
