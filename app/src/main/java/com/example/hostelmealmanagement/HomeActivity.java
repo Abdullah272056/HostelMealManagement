@@ -67,7 +67,9 @@ public class HomeActivity extends AppCompatActivity {
         depositButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Intent intent =new Intent(HomeActivity.this,DepositActivity.class);
+                intent.putExtra("token",token);
+                startActivity(intent);
             }
         });
     }
