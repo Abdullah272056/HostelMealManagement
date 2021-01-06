@@ -1,7 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp"
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+        <EditText
+            android:textColor="#000000"
+            android:inputType="number"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:layout_marginTop="10dp"
+            android:background="#DAD3D3"
+            android:hint="Deposit amount"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:id="@+id/depositAmountEditTextId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:textColor="#000000"
+            android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
+            android:layout_marginTop="30dp"
+            android:background="#DAD3D3"
+            android:hint="Select border"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:id="@+id/selectBorderTextViewId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Add Deposit"
+            android:layout_marginTop="50dp"
+            android:background="#DAD3D3"
+            android:textSize="20sp"
+            android:padding="15dp"
+            android:id="@+id/saveDepositButtonId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
