@@ -18,10 +18,10 @@
             android:maxLines="1"
             android:layout_marginTop="10dp"
             android:background="#DAD3D3"
-            android:hint="Deposit amount"
+            android:hint="Meal number"
             android:textSize="20sp"
             android:padding="10dp"
-            android:id="@+id/depositAmountEditTextId"
+            android:id="@+id/mealNumberEditTextId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
@@ -29,7 +29,7 @@
             android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
             android:layout_marginTop="30dp"
             android:background="#DAD3D3"
-            android:hint="Select border"
+            android:hint="Select border to add meal"
             android:textSize="20sp"
             android:padding="10dp"
             android:id="@+id/selectBorderTextViewId"
@@ -38,12 +38,12 @@
         <Button
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:text="Add Deposit"
+            android:text="Add Meal"
             android:layout_marginTop="50dp"
             android:background="#DAD3D3"
             android:textSize="20sp"
             android:padding="15dp"
-            android:id="@+id/saveDepositButtonId"
+            android:id="@+id/saveMealButtonId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
