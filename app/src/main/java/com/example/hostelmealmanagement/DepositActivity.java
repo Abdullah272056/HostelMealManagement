@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.hostelmealmanagement.retrofit.ApiInterface;
+import com.example.hostelmealmanagement.retrofit.RetrofitClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class DepositActivity extends AppCompatActivity {
@@ -18,6 +19,9 @@ String token;
         setContentView(R.layout.activity_deposit);
         //receive user token
         token= getIntent().getStringExtra("token");
+        //initialize apiInterface
+        apiInterface = RetrofitClient.getRetrofit("http://hostel-meal-calc.herokuapp.com/").create(ApiInterface.class);
+
         //view finding
         addDepositFloatingButton=findViewById(R.id.addDepositFloatingButtonId);
         addDepositFloatingButton.setOnClickListener(new View.OnClickListener() {
