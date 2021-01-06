@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:background="#D1D7FA"
+    android:layout_margin="2dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -13,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:textColor="#000000"
                 android:id="@+id/memberNameTextViewId"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:text="Name: Abdullah"
@@ -23,6 +26,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:textColor="#000000"
                 android:id="@+id/totalMealTextViewId"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:text="Total meal"
@@ -41,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:textColor="#000000"
                 android:id="@+id/mealRateTextViewId"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:text="Meal rate"
@@ -51,6 +56,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
             <TextView
+                android:textColor="#000000"
                 android:id="@+id/totalCostTextViewId"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:text="Total cost"
@@ -69,6 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:textColor="#000000"
                 android:id="@+id/depositAmountTextViewId"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:text="Deposit amount"
@@ -80,6 +87,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:textColor="#000000"
                 android:id="@+id/dueTextViewId"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
