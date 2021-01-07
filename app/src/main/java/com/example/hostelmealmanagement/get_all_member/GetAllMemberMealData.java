@@ -12,7 +12,7 @@ public class GetAllMemberMealData {
     private String id;
     @SerializedName("mealCount")
     @Expose
-    private Integer mealCount;
+    private String mealCount;
 
     public String getDateAdded() {
         return dateAdded;
@@ -30,11 +30,11 @@ public class GetAllMemberMealData {
         this.id = id;
     }
 
-    public Integer getMealCount() {
+    public String getMealCount() {
         return mealCount;
     }
 
-    public void setMealCount(Integer mealCount) {
+    public void setMealCount(String mealCount) {
         this.mealCount = mealCount;
     }
 }

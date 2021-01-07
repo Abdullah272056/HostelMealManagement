@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -190,8 +191,9 @@ MemberListCustomAdapter.OnContactClickListener onContactClickListener;
                     }
                     @Override
                     public void onFailure(Call<GetAllMemberDataResponse> call, Throwable t) {
-                        Toast.makeText(ExpensesActivity.this, "fff", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ExpensesActivity.this, "failed", Toast.LENGTH_SHORT).show();
                         memberProgressBar.setVisibility(View.INVISIBLE);
+                        Log.e("gfh",t.getMessage());
 
                     }
                 });
