@@ -4,7 +4,7 @@ import com.example.hostelmealmanagement.expense.create_expense.DeleteExpenseData
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DeleteExpenseDataResponse {
+public class DeleteExpenseDataResponse{
     @SerializedName("success")
     @Expose
     private Boolean success;

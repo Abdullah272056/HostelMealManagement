@@ -123,6 +123,9 @@ public class GetAllExpenseCustomAdapter extends RecyclerView.Adapter<GetAllExpen
                                 if (response.code()==200){
                                     Toast.makeText(context, "Successfully deleted", Toast.LENGTH_SHORT).show();
                                 }
+                                else if (response.code()==403){
+                                    Toast.makeText(context, "User role boarder is not authorized to access this route", Toast.LENGTH_SHORT).show();
+                                }
                                 else if (response.code()==503){
                                     Toast.makeText(context, "Service Unavailable", Toast.LENGTH_SHORT).show();
                                 }
